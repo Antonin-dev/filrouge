@@ -1,12 +1,32 @@
 body{
     position: relative;
+    background-image: url(../../img/pexels-oliver-sjöström-931007.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
+
+/*------------------------------ NAVBAR--------------------------------------------- */
 
 .navbar-item-custom, .navbar-item-custom a{
 
 color: #FFF;
 
 }
+
+.img-navbar{
+    width: 80px;
+}
+
+.navbar-perso{
+    opacity: 0.9;
+    padding: 0 0 2px 0;
+    
+}
+
+
+/*------------------------------ FOOTER--------------------------------------------- */
+
 
 .footer-custom{
 
@@ -20,17 +40,29 @@ color: #FFF;
     /* Footer fixé bottom */
 }
 
-.bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+
+/*------------------------------ ATTRACTION SINGLE--------------------------------------------- */
+
+
+.attraction-item{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    border: solid 1px black;
+    border-radius: 5px;
 }
 
-@media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-    }
+
+.btn-perso{
+    text-decoration: none;
+    background-color: seagreen;
+    
+}
+
+.h1-perso{
+    border-radius: 5px;
+}
+
+.container-detail-attraction{
+    border-radius: 5px;
 }

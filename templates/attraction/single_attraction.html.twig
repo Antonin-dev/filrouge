@@ -1,0 +1,10 @@
+<div class="attraction-item text-center bg-white">
+
+    <a href=""><img src="/uploads/{{attraction.picture}}" alt="" class="img-fluid"></a>
+    <h5>{{attraction.name}}</h5>
+    <span class="product-subtitle">{{attraction.subtitle}}</span>
+    <button type="button" class="btn  btn-perso "><a href="{{ path('attraction_detail', { 'slug' : attraction.slug } ) }}" class="text-white">Découvrir</button>
+
+</div>
+
+
