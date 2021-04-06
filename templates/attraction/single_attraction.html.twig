@@ -2,8 +2,9 @@
 
     <a href=""><img src="/uploads/{{attraction.picture}}" alt="" class="img-fluid"></a>
     <h5>{{attraction.name}}</h5>
-    <span class="product-subtitle">{{attraction.subtitle}}</span>
-    <button type="button" class="btn  btn-perso "><a href="{{ path('attraction_detail', { 'slug' : attraction.slug } ) }}" class="text-white">Découvrir</button>
+    <span class="attraction-category">Categorie : {{attraction.category}}</span>
+    <span class="attraction-subtitle">{{attraction.subtitle}}</span>
+    <button type="button" class="btn  btn-perso mb-2 ml-1 mr-1"><a href="{{ path('attraction_detail', { 'slug' : attraction.slug } ) }}" class="text-white">Découvrir</button>
 
 </div>
 

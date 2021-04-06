@@ -47,6 +47,11 @@ class Attraction
      */
     private $isBest;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="attractions")
+     */
+    private $category;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +125,18 @@ class Attraction
     public function setIsBest(bool $isBest): self
     {
         $this->isBest = $isBest;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
