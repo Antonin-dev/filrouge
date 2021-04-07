@@ -5,10 +5,10 @@
 {% block content %}
 
 <div class="row mt-4">
-    <div class="col-md-5">
-        <img src="/uploads/{{attraction.picture}}" alt="{{attraction.name}}" class="img-fluid">
+    <div class="col-md-12" style = "height: 500px; background-image: url(/uploads/{{attraction.picture}}); background-size: cover; background-repeat: no-repeat; background-position: top;">
+        {# <img src="/uploads/{{attraction.picture}}" alt="{{attraction.name}}" class="img-fluid"> #}
     </div>
-    <div class="col-md-7 my-auto bg-perso text-white container-detail-attraction">
+    <div class="col-md-12 my-auto bg-perso text-white container-detail-attraction">
         <h3 class="text-center">{{attraction.name}}</h3>
         <hr>
         <p>
