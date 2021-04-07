@@ -12,6 +12,19 @@ body{
     background-position: center;
 }
 
+.bg-perso{
+    background-color: #04142fc4;
+}
+
+a{
+    color: green;
+    
+}
+
+a:hover{
+    text-decoration: none;
+}
+
 /*------------------------------ NAVBAR--------------------------------------------- */
 
 .navbar-item-custom, .navbar-item-custom a{
@@ -72,6 +85,7 @@ color: #FFF;
     flex-direction: column;
     margin-bottom: 10px;
     border: solid 1px black;
+    background-color: whitesmoke;
     border-radius: 5px;
 }
 
@@ -117,7 +131,7 @@ color: #FFF;
 /* -------------------------FORMULAIRE INSCRIPTION------------------ */
 
 .container-form-inscription, .container-form-connexion{
-    background-color: grey;
+    background-color: rgba(128, 128, 128, 0.801);
     padding: 30px;
     border: grey solid 2px;
     border-radius: 15px;

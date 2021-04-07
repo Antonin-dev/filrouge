@@ -1,10 +1,23 @@
-<div class="attraction-item text-center bg-white">
+<div class="attraction-item text-center">
 
-    <a href=""><img src="/uploads/{{attraction.picture}}" alt="" class="img-fluid"></a>
+    <div class="image-cards" style = "height: 231px; background-image: url(/uploads/{{attraction.picture}}); background-size: cover; background-repeat: no-repeat; background-position: center;"></div>
+
+    <span class="badge badge-pill 
+    
+    {% if attraction.category == 'Vitesse' %}
+        badge-warning
+    {% elseif attraction.category == 'Horreur' %}
+        badge-danger
+    {% elseif attraction.category == 'Jeune âge' %}
+        badge-success
+    {% endif %}
+    ">{{attraction.category}}</span>
+
     <h5>{{attraction.name}}</h5>
-    <span class="attraction-category">Categorie : {{attraction.category}}</span>
+
     <span class="attraction-subtitle">{{attraction.subtitle}}</span>
-    <button type="button" class="btn  btn-perso mb-2 ml-1 mr-1"><a href="{{ path('attraction_detail', { 'slug' : attraction.slug } ) }}" class="text-white">Découvrir</button>
+
+    <a href="{{ path('attraction_detail', { 'slug' : attraction.slug } ) }}" class="text-white"><button type="button" class="btn btn-block btn-perso mb-1">Découvrir</button></a>
 
 </div>
 
