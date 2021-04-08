@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Je réserve - Jurassic World{% endblock %}
+
+{% block content %}
+
+    <div class="container-address mt-4 text-center d-flex flex-column align-items-center bg-info text-white ">
+        <h1>Recapitulatif de ma commande</h1>
+        
+        <h2>Pret à réserver {{reservation.user.firstname}}</h2>
+
+        <p>Vérifier vos informations : <br>
+
+        <div class="card col-6 bg-dark mb-4" style="width: 18rem;">
+            <img class="card-img-top" src="/img/logo_jw.svg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{reservation.user.firstname}} {{reservation.user.lastname}}</h5>
+                <p class="card-text"><br>
+                {{reservation.user.email}} <br>
+                Date d'entrée au parc : {{reservation.datechoice|date("m/d/Y")}} <br>
+                Nombre de personne : {{reservation.quantity}} <br>
+                Votre réservation sera validé apres le paiement
+                </p>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-success btn-block mb-1">Effectuer le paiement</button>
+    
+        
+        
+    </div>
+    
+ 
+{% endblock %}

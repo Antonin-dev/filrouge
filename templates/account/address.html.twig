@@ -4,11 +4,12 @@
 
 {% block content %}
 
-<div class="container-address mt-4">
-    <a href="{{path('account_address_add')}}" class="btn btn-success btn-sm float-right">Ajouter une adresse</a>
+<div class="container-address mt-4 bg-info p-2 rounded-3 text-white">
         <h1>Mes adresses</h1>
+        <a href="{{path('account_address_add')}}" class="btn btn-success btn-sm">Ajouter une adresse</a>
+        <a href="{{path('account')}}" class="btn btn-secondary btn-sm float-end">Retour</a></br> 
         C'est dans cet espace que vous allez pouvoir gérer toutes vos adresses.</br> 
-        <a href="{{path('account')}}">Retour</a></br> 
+        
         <hr>
         {% if app.user.addresses|length == 0 %}
             <p class="text-center">
