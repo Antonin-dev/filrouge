@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Parc;
 use App\Entity\Reservation;
 use App\Form\ReservationType;
 use DateTime;
@@ -38,12 +39,30 @@ class ReservationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             if ($form->get('datechoice')->getData() > $date) {
-                
-                $this->session->set('datechoice', $form->get('datechoice')->getData());
-                $this->session->set('quantity', $form->get('quantity')->getData());
-                // dd($this->session->all());
-                return $this->redirectToRoute('reservation_recap');
 
+                $reservationJour = $form->get('quantity')->getData();
+
+                $capacityParc = $this->entityManager->getRepository(Parc::class)->findOneBy([
+                    'name' => 'jurassicpark'
+                ])->getCapacity();
+                $reservations = $this->entityManager->getRepository(Reservation::class)->findBy([
+                    'datechoice' => $form->get('datechoice')->getData()
+                ]);
+
+                foreach ($reservations as $reservation) {
+                    $reservationJour += $reservation->getQuantity();
+                }
+
+                if ($reservationJour < $capacityParc) {
+                    $this->session->set('datechoice', $form->get('datechoice')->getData());
+                    $this->session->set('quantity', $form->get('quantity')->getData());
+                    // dd($this->session->all());
+                    return $this->redirectToRoute('reservation_recap'); 
+                }
+                else{
+                    $notification = "Capacité maximum du parc atteint veuillez choisir une autre date";
+                }
+                
             }
             else{
                 $notification = "Vous ne pouvez choisir une date antérieur à la date du jour.";
@@ -75,8 +94,8 @@ class ReservationController extends AbstractController
         $reservation->setIspaid(false);
         $reservation->setCreatedat($date);
 
-        // $this->entityManager->persist($reservation);
-        // $this->entityManager->flush();
+        $this->entityManager->persist($reservation);
+        $this->entityManager->flush();
         
 
 
