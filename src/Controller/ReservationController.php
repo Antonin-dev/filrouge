@@ -85,7 +85,8 @@ class ReservationController extends AbstractController
     public function recap(): Response
     {
         $date = new DateTime();
-
+        $entryPrice = $this->entityManager->getRepository(Parc::class)->findOneBy(['name' => 'jurassicpark'])->getPrice();
+        
         $reservation = new Reservation;
         $reservation->setDatechoice($this->session->get('datechoice'));
         $reservation->setQuantity($this->session->get('quantity'));
@@ -93,6 +94,7 @@ class ReservationController extends AbstractController
         $reservation->setUser($this->getUser());
         $reservation->setIspaid(false);
         $reservation->setCreatedat($date);
+        $reservation->setTotal($entryPrice * $this->session->get('quantity'));
 
         $this->entityManager->persist($reservation);
         $this->entityManager->flush();
@@ -100,7 +102,8 @@ class ReservationController extends AbstractController
 
 
         return $this->render('reservation/recap.html.twig',[
-            'reservation' => $reservation
+            'reservation' => $reservation,
+            'price' => $entryPrice
         ]);
     }
 }

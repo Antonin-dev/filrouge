@@ -18,7 +18,11 @@
                 <p class="card-text"><br>
                 {{reservation.user.email}} <br>
                 Date d'entrée au parc : {{reservation.datechoice|date("m/d/Y")}} <br>
+                <hr>
                 Nombre de personne : {{reservation.quantity}} <br>
+                Prix entrée au parc : {{price}} €.<br>
+                Total : {{reservation.total}} €. <br>
+                <hr>
                 Votre réservation sera validé apres le paiement
                 </p>
             </div>
