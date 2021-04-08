@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Je réserve - Jurassic World{% endblock %}
+
+{% block content %}
+
+    <div class="container-address mt-4">
+        <h1>Je réserve</h1>
+        <a href="{{path('home')}}">Retour</a></br> 
+        <hr>
+        {{ form(form) }}
+    </div>
+    
+ 
+{% endblock %}
