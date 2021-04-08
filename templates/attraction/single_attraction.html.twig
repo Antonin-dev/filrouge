@@ -1,24 +1,24 @@
-<div class="attraction-item text-center">
+<div class="attraction-item text-center d-grid gap-2">
 
     <div class="image-cards" style = "height: 231px; background-image: url(/uploads/{{attraction.picture}}); background-size: cover; background-repeat: no-repeat; background-position: center;"></div>
 
-    <span class="badge badge-pill 
+    <span class="badge  
     
     {% if attraction.category == 'Vitesse' %}
-        badge-warning
+        bg-warning
     {% elseif attraction.category == 'Horreur' %}
-        badge-danger
+        bg-danger
     {% elseif attraction.category == 'Jeune âge' %}
-        badge-success
+        bg-success
     {% endif %}
     ">{{attraction.category}}</span>
 
     <h5>{{attraction.name}}</h5>
 
     <span class="attraction-subtitle">{{attraction.subtitle}}</span>
-
-    <a href="{{ path('attraction_detail', { 'slug' : attraction.slug } ) }}" class="text-white"><button type="button" class="btn btn-block btn-perso mb-1">Découvrir</button></a>
+    <div class="d-grid gap-2">
+  <a href="{{ path('attraction_detail', { 'slug' : attraction.slug } ) }}" class="text-white btn btn-success mb-1">Découvrir</a>
+</div>
+    
 
 </div>
-
-
