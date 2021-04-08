@@ -16,7 +16,7 @@
 
     
 </head>
-<body>
+<body {{ stimulus_controller('symfony/ux-swup/swup') }}>
 
 <header>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -55,7 +55,7 @@
 </nav>
    
 </header>
-
+<main id="swup">
 <main role="main">
 
         {% if block('carousel') is defined %}
@@ -108,7 +108,7 @@
 
       {% block content %}
       {% endblock %}
-
+</main>
     </div><!-- /.container -->
 
     <!-- FOOTER -->
