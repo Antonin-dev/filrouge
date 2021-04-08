@@ -3,7 +3,7 @@
 {% block title %}Connexion - Jurassic World{% endblock %}
 
 {% block content %}
-<form method="post">
+<form method="post" class="bg-info rounded-3 text-white p-2 mt-3">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
