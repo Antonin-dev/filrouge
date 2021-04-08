@@ -4,9 +4,14 @@
 
 {% block content %}
 
-    <div class="container-address mt-4">
+    <div class="container-address mt-4 p-2 bg-info rounded-3 text-white">
         <h1>Je réserve</h1>
-        <a href="{{path('home')}}">Retour</a></br> 
+        <a href="{{path('home')}}" class="btn btn-secondary mb-1">Retour</a></br> 
+        {% if notification %}
+        
+        <div class="text-center alert alert-danger">{{notification}}</div>
+        
+        {% endif %}
         <hr>
         {{ form(form) }}
     </div>

@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 class ReservationController extends AbstractController
 {
 
@@ -29,20 +30,31 @@ class ReservationController extends AbstractController
      */
     public function index(Request $request): Response
     {
-
+        $notification = null;
+        $date = new DateTime();
         $form = $this->createForm(ReservationType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->session->set('datechoice', $form->get('datechoice')->getData());
-            $this->session->set('quantity', $form->get('quantity')->getData());
-            // dd($this->session->all());
-            return $this->redirectToRoute('reservation_recap');
+
+            if ($form->get('datechoice')->getData() > $date) {
+                
+                $this->session->set('datechoice', $form->get('datechoice')->getData());
+                $this->session->set('quantity', $form->get('quantity')->getData());
+                // dd($this->session->all());
+                return $this->redirectToRoute('reservation_recap');
+
+            }
+            else{
+                $notification = "Vous ne pouvez choisir une date antérieur à la date du jour.";
+            }
+
             
         }
 
         return $this->render('reservation/index.html.twig', [
             'form' => $form->createView(),
+            'notification' => $notification
         ]);
     }
 
@@ -51,7 +63,7 @@ class ReservationController extends AbstractController
     /**
      * @Route("/reservation/recap", name="reservation_recap")
      */
-    public function recap(Request $request): Response
+    public function recap(): Response
     {
         $date = new DateTime();
 
