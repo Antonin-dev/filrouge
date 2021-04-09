@@ -29,6 +29,11 @@ class AttractionCrudController extends AbstractCrudController
                 ->setUploadDir('public/uploads/')
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired(false),
+            ImageField::new('imagefull')
+                ->setBasePath('uploads/')
+                ->setUploadDir('public/uploads/')
+                ->setUploadedFileNamePattern('[randomhash].[extension]')
+                ->setRequired(false),
             AssociationField::new('category'),
             TextField::new('subtitle'),
             TextareaField::new('description'),

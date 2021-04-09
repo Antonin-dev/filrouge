@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\AttractionRepository;
+use App\Repository\SpectacleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=AttractionRepository::class)
+ * @ORM\Entity(repositoryClass=SpectacleRepository::class)
  */
-class Attraction
+class Spectacle
 {
     /**
      * @ORM\Id
@@ -33,7 +33,7 @@ class Attraction
     private $picture;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=255)
      */
     private $subtitle;
 
@@ -43,19 +43,9 @@ class Attraction
     private $description;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isBest;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="attractions")
-     */
-    private $category;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
-    private $imagefull;
+    private $horaire;
 
     public function getId(): ?int
     {
@@ -122,38 +112,14 @@ class Attraction
         return $this;
     }
 
-    public function getIsBest(): ?bool
+    public function getHoraire(): ?string
     {
-        return $this->isBest;
+        return $this->horaire;
     }
 
-    public function setIsBest(bool $isBest): self
+    public function setHoraire(string $horaire): self
     {
-        $this->isBest = $isBest;
-
-        return $this;
-    }
-
-    public function getCategory(): ?Category
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?Category $category): self
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    public function getImagefull(): ?string
-    {
-        return $this->imagefull;
-    }
-
-    public function setImagefull(string $imagefull): self
-    {
-        $this->imagefull = $imagefull;
+        $this->horaire = $horaire;
 
         return $this;
     }

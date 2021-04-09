@@ -27,7 +27,7 @@ class ReservationType extends AbstractType
                 ]
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Valider La date',
+                'label' => 'Valider',
                 'attr' => [
                     'class' => 'btn btn-success btn-block mt-1'
                 ]
