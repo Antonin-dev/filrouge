@@ -79,6 +79,45 @@ $info: rgba(128, 128, 128, 0.801);
 }
 
 
+// ---------------------------CARDS ---------------------------------------
+
+@media screen and (min-width:768px) {
+   .card-perso{
+    height: 405px;
+
+
+   } 
+    
+
+}
+
+.image-full{
+    height: 600px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media screen and (max-width:768px){
+    .image-full{
+        height: 400px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+@media screen and (max-width:500px){
+    .image-full{
+        height: 300px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+
+
+
 
 
 

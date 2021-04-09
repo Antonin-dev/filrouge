@@ -23,9 +23,9 @@
 
 </div> #}
 
- <div class="card mb-2 text-center bg-light">
-    <img src="/uploads/{{attraction.picture}}" class="card-img-top" height="231px" alt="...">
-    <div class="card-body">
+ <div class="card-perso mb-2 text-center rounded-2 bg-light d-flex flex-column justity-content-around">
+    <img src="/uploads/{{attraction.picture}}" class="card-img-top img-card"  alt="...">
+    <div class="card-body d-flex flex-column justify-content-around">
     <span class="badge 
     {% if attraction.category == 'Vitesse' %}
         bg-warning
@@ -40,7 +40,7 @@
       <h5 class="card-title">{{attraction.name}}</h5>
       <p class="card-text">{{attraction.subtitle}}</p>
       <div class="d-grid gap-2">
-      <a href="{{ path('attraction_detail', { 'slug' : attraction.slug } ) }}" class="text-white btn btn-success  mb-1">Découvrir</a>
+        <a href="{{ path('attraction_detail', { 'slug' : attraction.slug } ) }}" class="text-white btn btn-success">Découvrir</a>
       </div>
     </div>
   </div>
