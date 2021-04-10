@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Classe\Mailjet;
 use App\Entity\Parc;
 use App\Entity\Reservation;
 use App\Form\ReservationType;
@@ -98,6 +99,11 @@ class ReservationController extends AbstractController
 
         $this->entityManager->persist($reservation);
         $this->entityManager->flush();
+
+    
+
+        $mailjet = new Mailjet;
+        $mailjet->reservationEmail($this->getUser()->getEmail(), $this->getUser()->getFirstName(), $reservation->getNumberticket(), date_format($reservation->getDatechoice(), 'd/m/Y'), $reservation->getQuantity());
         
 
 

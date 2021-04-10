@@ -52,6 +52,11 @@ class Reservation
      */
     private $total;
 
+    public function __toString()
+    {
+        return $this->getDatechoice();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

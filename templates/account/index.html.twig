@@ -5,7 +5,7 @@
 {% block content %}
 
 
-    <div class="container-compte mt-4 bg-info p-2">
+    <div class="col-md-12 mt-4 bg-info p-2 rounded-3">
         <h1 class="text-white">Mon compte</h1>
         {% if is_granted('ROLE_ADMIN') %}
         <a href="/admin">Vous etes admin acceder au back office</a></br> 
@@ -17,14 +17,14 @@
         <hr>   
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 mb-2">
                 <div class="account-item text-center">
                     <img src="{{ asset('assets/img/padlock.png')}}" alt="">
                     <a href="{{path('account_update_password')}}">Modifier mon mot de passe</a>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="account-item text-center">
+                <div class="account-item text-center mb-2">
                     <img src="{{ asset('assets/img/address.png')}}" alt="">
                     <a href="{{path('account_address')}}">Mes adresses</a>
                 </div>

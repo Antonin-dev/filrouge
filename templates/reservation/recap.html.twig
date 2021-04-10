@@ -17,7 +17,7 @@
                 <h5 class="card-title">{{reservation.user.firstname}} {{reservation.user.lastname}}</h5>
                 <p class="card-text"><br>
                 {{reservation.user.email}} <br>
-                Date d'entrée au parc : {{reservation.datechoice|date("m/d/Y")}} <br>
+                Date d'entrée au parc : {{reservation.datechoice|date("d/m/Y")}} <br>
                 <hr>
                 Nombre de personne : {{reservation.quantity}} <br>
                 Prix entrée au parc : {{price}} €.<br>

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Classe\Mailjet;
 use App\Entity\User;
 use App\Form\RegisterType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -61,6 +62,10 @@ class RegisterController extends AbstractController
 
                 // Notification à envoyer
                 $notification = "Votre inscription c'est correctement déroulée. vous pouvez dès à présent vous connecter à votre compte .";
+                
+                // Envoie email
+                $mailjet = new Mailjet;
+                $mailjet->sendWelcomeEmail($user->getEmail(), $user->getFirstname());
 
             } else {
                 $notification = "L'email que vous avez renseigné existe déja";

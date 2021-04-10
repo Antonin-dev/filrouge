@@ -1,3 +1,25 @@
+// -----------------------------Mixin--------------------------------------------------
+
+@mixin bg-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+// --------------------------------COULEUR----------------------------------------
+
+$secondary:  #04142fc4;
+$light: #f8e9e9;
+$success : #19620f;
+$info: rgba(128, 128, 128, 0.801);
+
+
+
+//----------------------------------Body-------------------------------------------
+
+
 *{
     box-sizing: border-box;
     padding: 0;
@@ -9,19 +31,9 @@
 body{
    
     background-image: url(../../public/img/pexels-oliver-sjöström-931007.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    @include bg-image;
 }
 
-
-
-// --------------------------------COULEUR----------------------------------------
-
-$secondary:  #04142fc4;
-$light: #f8e9e9;
-$success : #19620f;
-$info: rgba(128, 128, 128, 0.801);
 
 
 /*------------------------------ NAVBAR--------------------------------------------- */
@@ -93,35 +105,28 @@ $info: rgba(128, 128, 128, 0.801);
 
 .image-full{
     height: 600px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    @include bg-image;
 }
 
 @media screen and (max-width:768px){
     .image-full{
         height: 400px;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+        @include bg-image;
     }
 }
 @media screen and (max-width:500px){
     .image-full{
         height: 300px;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+        @include bg-image;
     }
 }
 
 // -----------------SPECTACLE-------------------------------------
 
 .image-spectacle{
-    background-size: cover;
-    background-repeat: no-repeat;
+    @include bg-image;
     height: 500px;
-    background-position: center;
+    
 }
 
 
@@ -131,25 +136,15 @@ $info: rgba(128, 128, 128, 0.801);
 /* Item Mon compte */
 
 .account-item{
-    background-color: #f1F2f6;
-    // padding: 70px;
+    background-color: $light;  
     height: 160px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 5px;
 }
 
 
 
 
 
-.container-compte{
-    // background-color: grey;
-    // padding: 30px;
-    // margin-top: 70px;
-    // margin-bottom: 20px;
-    height: 100%;
-    border: grey solid 2px;
-    border-radius: 15px;
-    // color: white;
-}
