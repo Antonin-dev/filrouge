@@ -145,6 +145,38 @@ body{
 }
 
 
+// -----------------------------------Carte Google--------------------------
+
+.carte-google{
+    width : 600px;
+    height : 450px;
+}
+
+
+@media screen and (max-width:1208px) {
+    .carte-google{
+        width : 400px;
+        height : 300px;
+    }
+     
+ 
+ }
+@media screen and (max-width:460px) {
+    .carte-google{
+        width : 300px;
+        height : 200px;
+    }
+     
+ 
+ }
+@media screen and (max-width:340px) {
+    .carte-google{
+        width : 250px;
+        height : 170px;
+    }
+     
+ 
+ }
 
 
 
