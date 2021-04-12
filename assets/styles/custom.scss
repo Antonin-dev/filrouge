@@ -6,6 +6,8 @@
     background-size: cover;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Train+One&display=swap');
+
 
 
 // --------------------------------COULEUR----------------------------------------
@@ -30,18 +32,51 @@ $info: rgba(128, 128, 128, 0.801);
 
 body{
    
-    background-image: url(../../public/img/pexels-oliver-sjöström-931007.jpg);
+    background-image: url(../../public/assets/img/pexels-oliver-sjöström-931007.jpg);
     @include bg-image;
 }
 
 
 
 /*------------------------------ NAVBAR--------------------------------------------- */
+.navbar{
 
+    font-family: 'Train One', cursive;
+}
 
 .img-navbar{
     width: 80px;
 }
+
+
+#lien{
+
+    text-decoration: none;   
+}
+
+.swup-control{
+    display: flex;
+}
+
+@media screen  and (min-width:992px){
+    .nav-link{
+        &::after{
+            content: '';
+            display: block;
+            width: 0px;
+            margin: 5px auto 0 auto;
+            height: 2px;
+            border-radius: 2px;
+            background: #aaa;
+            transition: all 0.2s ease-out;
+        }
+    
+        &:hover::after{
+            width: 100%;
+        }
+    }  
+}
+
 
 
 
@@ -176,6 +211,34 @@ body{
      
  
  }
+
+//  ---------------------------------------------Mon compte -----------------------------------
+
+.account-item {
+
+    a{
+        text-decoration: none;
+        color: $secondary;
+
+        &::after{
+            content: '';
+            display: block;
+            width: 0px;
+            margin: 5px auto 0 auto;
+            height: 2px;
+            border-radius: 2px;
+            background: #aaa;
+            transition: all 0.2s ease-out;
+        }
+    
+        &:hover::after{
+            width: 100%;
+        }
+    }
+
+    
+}
+    
 
 
 

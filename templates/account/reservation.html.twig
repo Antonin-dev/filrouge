@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes réservation - Jurassic World{% endblock %}
+
+{% block content %}
+<div class="text-light bg-secondary p-2 mt-2 rounded-3">
+    <h1>Mes réservations</h1>
+    <p>C'est dans cet espace que vous allez pouvoir consulter vos réservations</p>
+    
+    <table class="table mt-4 text-white">
+        <thead>
+            <tr>
+                <th>Numéro de réservation</th>
+                <th>Date de séjour</th>
+                <th>Payé</th>
+                <th>Crée le</th>
+                <th>Quantité</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in reservations %}
+                <tr>
+                    <td>{{reservation.numberticket}}</td>
+                    <td>{{reservation.datechoice|date('d/m/Y')}}</td>
+                    <td>{% if reservation.ispaid %}Paiement validé{% endif %}</td>
+                    <td>{{reservation.createdat|date('d/m/Y')}} à {{reservation.createdat|date('H:i:s')}}</td>
+                    <td>{% if reservation.quantity == 1 %}1 place {% else %}{{reservation.quantity}} places{% endif %}</td>
+                    <td>{{(reservation.total / 100)|number_format(2, ',', '.')}} €</td>
+                </tr>   
+            {% endfor %}
+            
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}
