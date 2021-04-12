@@ -57,6 +57,11 @@ class Address
      */
     private $phone;
 
+    public function __toString()
+    {
+        return $this->getAddress() . ' ' . $this->getPostal() . ' ' . $this->getCity() . ' ' . $this->getCountry();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

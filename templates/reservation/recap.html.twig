@@ -20,8 +20,8 @@
                 Date d'entrée au parc : {{reservation.datechoice|date("d/m/Y")}} <br>
                 <hr>
                 Nombre de personne : {{reservation.quantity}} <br>
-                Prix entrée au parc : {{price}} €.<br>
-                Total : {{reservation.total}} €. <br>
+                Prix entrée au parc : {{ (price / 100)|number_format(2, ',', '.') }} €.<br>
+                Total : {{ (reservation.total / 100)|number_format(2, ',', '.') }} €. <br>
                 <hr>
                 Votre réservation sera validé apres le paiement
                 </p>

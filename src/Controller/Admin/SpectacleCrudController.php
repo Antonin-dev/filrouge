@@ -20,12 +20,12 @@ class SpectacleCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('name'),
+            TextField::new('name', 'Nom'),
             SlugField::new('slug')->setTargetFieldName('name'),
-            TextField::new('horaire'),
-            TextField::new('subtitle'),
-            TextareaField::new('description'),
-            ImageField::new('picture')
+            TextField::new('horaire', 'Horaire'),
+            TextField::new('subtitle', 'Sous-titre'),
+            TextareaField::new('description', 'Description'),
+            ImageField::new('picture', 'Image')
                 ->setBasePath('uploads/')
                 ->setUploadDir('public/uploads/')
                 ->setUploadedFileNamePattern('[randomhash].[extension]')

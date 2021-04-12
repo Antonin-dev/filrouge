@@ -22,22 +22,23 @@ class AttractionCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('name'),
+            TextField::new('name', 'Nom'),
             SlugField::new('slug')->setTargetFieldName('name'),
-            ImageField::new('picture')
+            ImageField::new('picture', 'Miniature')
                 ->setBasePath('uploads/')
                 ->setUploadDir('public/uploads/')
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired(false),
-            ImageField::new('imagefull')
+            ImageField::new('imagefull', 'Image Full')
                 ->setBasePath('uploads/')
                 ->setUploadDir('public/uploads/')
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
-                ->setRequired(false),
-            AssociationField::new('category'),
-            TextField::new('subtitle'),
-            TextareaField::new('description'),
-            BooleanField::new('isBest')
+                ->setRequired(false)
+                ->hideOnIndex(),
+            AssociationField::new('category', 'Catégorie'),
+            TextField::new('subtitle', 'Sous-titre'),
+            TextareaField::new('description', 'Description'),
+            BooleanField::new('isBest', 'Mise en avant')
 
             
         ];
