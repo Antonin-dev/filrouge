@@ -115,18 +115,8 @@ class ReservationController extends AbstractController
         $reservation->setAddressReservation($addressReservation);
         $reservation->setTotal($entryPrice * $this->session->get('quantity'));
 
-
-        
-
-        // $this->entityManager->persist($reservation);
-        // $this->entityManager->flush();
-
-    
-
-        // $mailjet = new Mailjet;
-        // $mailjet->reservationEmail($this->getUser()->getEmail(), $this->getUser()->getFirstName(), $reservation->getNumberticket(), date_format($reservation->getDatechoice(), 'd/m/Y'), $reservation->getQuantity());
-        
-
+        $this->entityManager->persist($reservation);
+        $this->entityManager->flush();
 
         return $this->render('reservation/recap.html.twig',[
             'reservation' => $reservation,

@@ -57,6 +57,11 @@ class Reservation
      */
     private $AddressReservation;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $stripesession;
+
     public function __toString()
     {
         return $this->getDatechoice();
@@ -159,6 +164,18 @@ class Reservation
     public function setAddressReservation(string $AddressReservation): self
     {
         $this->AddressReservation = $AddressReservation;
+
+        return $this;
+    }
+
+    public function getStripesession(): ?string
+    {
+        return $this->stripesession;
+    }
+
+    public function setStripesession(?string $stripesession): self
+    {
+        $this->stripesession = $stripesession;
 
         return $this;
     }

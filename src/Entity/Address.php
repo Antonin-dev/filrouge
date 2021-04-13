@@ -59,7 +59,7 @@ class Address
 
     public function __toString()
     {
-        return $this->getAddress() . '[br]' . $this->getPostal() . '[br]' . $this->getCity() . '[br]' . $this->getCountry();
+        return $this->getAddress() . '[br]' . $this->getPostal() . '[br]' . $this->getCity() . ' - ' . $this->getCountry();
     }
 
     public function getId(): ?int

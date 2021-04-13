@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block effet %}{% endblock %}
+{% block title %}Je réserve - Jurassic World{% endblock %}
+
+{% block content %}
+
+    <div class="container-address mt-4 text-center d-flex flex-column align-items-center bg-secondary text-white rounded-3">
+        
+        <img src="{{asset('assets/img/jurassic_world_bandeau.jpg')}}" alt="" class="img-fluid mt-2">
+
+        <h2>Bienvenue {{reservation.user.firstname}} {{reservation.user.lastname}}</h2>
+        <p>Votre réservation est bien confirmé</p>
+        <p>Gardez bien votre numéro de commande il vous sera demandé pour acceder au parc :</p>
+        <p>{{reservation.numberticket}}</p>
+
+        <p>Resumé de votre commande : <br>
+        {{reservation.user.email}} <br>
+                <p>Addresse de facturation : <br> 
+                {{reservation.AddressReservation|replace({'[br]' : '<br/>'})|raw}}
+                </p>
+                Date d'entrée au parc : {{reservation.datechoice|date("d/m/Y")}} <br>
+                <hr>
+                Nombre de personne : {{reservation.quantity}} <br>
+                Prix entrée au parc : {{ (price / 100)|number_format(2, ',', '.') }} €.<br>
+                Total : {{ (reservation.total / 100)|number_format(2, ',', '.') }} €. <br>
+                <hr>
+        </p>
+        
+
+        
+        
+
+
+    
+        
+        
+    </div>
+    
+ 
+{% endblock %}

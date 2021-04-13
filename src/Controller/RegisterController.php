@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Classe\Mailjet;
+use App\Service\Mailjet;
 use App\Entity\User;
 use App\Form\RegisterType;
 use Doctrine\ORM\EntityManagerInterface;
