@@ -52,6 +52,11 @@ class Reservation
      */
     private $total;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $AddressReservation;
+
     public function __toString()
     {
         return $this->getDatechoice();
@@ -142,6 +147,18 @@ class Reservation
     public function setTotal(float $total): self
     {
         $this->total = $total;
+
+        return $this;
+    }
+
+    public function getAddressReservation(): ?string
+    {
+        return $this->AddressReservation;
+    }
+
+    public function setAddressReservation(string $AddressReservation): self
+    {
+        $this->AddressReservation = $AddressReservation;
 
         return $this;
     }

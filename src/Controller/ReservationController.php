@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use App\Classe\Mailjet;
+use App\Service\Mailjet;
+use App\Entity\Address;
 use App\Entity\Parc;
 use App\Entity\Reservation;
 use App\Form\ReservationType;
@@ -37,6 +38,7 @@ class ReservationController extends AbstractController
         $form = $this->createForm(ReservationType::class);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
 
             if ($form->get('datechoice')->getData() > $date) {
@@ -57,8 +59,14 @@ class ReservationController extends AbstractController
                 if ($reservationJour < $capacityParc) {
                     $this->session->set('datechoice', $form->get('datechoice')->getData());
                     $this->session->set('quantity', $form->get('quantity')->getData());
-                    // dd($this->session->all());
-                    return $this->redirectToRoute('reservation_recap'); 
+                    
+                    if (!$this->getUser()->getAddresses()->getValues()) {
+
+                        return $this->redirectToRoute('account_address_add');
+                    
+                    }
+                    
+                    return $this->redirectToRoute('reservation_address'); 
                 }
                 else{
                     $notification = "Capacité maximum du parc atteint veuillez choisir une autre date";
@@ -80,14 +88,31 @@ class ReservationController extends AbstractController
 
 
 
+
     /**
-     * @Route("/reservation/recap", name="reservation_recap")
+     * @Route("/reservation/choix-adresse", name="reservation_address")
      */
-    public function recap(): Response
+    public function addressChoice(): Response
+    {
+
+        return $this->render('reservation/address_choice.html.twig');
+    }
+
+
+
+
+
+    /**
+     * @Route("/reservation/recap/{addressid}", name="reservation_recap")
+     */
+    public function recap($addressid): Response
     {
         $date = new DateTime();
         $entryPrice = $this->entityManager->getRepository(Parc::class)->findOneBy(['name' => 'jurassicpark'])->getPrice();
-        
+        $addressReservation = $this->entityManager->getRepository(Address::class)->findOneBy([
+            'id' => $addressid
+        ]);
+
         $reservation = new Reservation;
         $reservation->setDatechoice($this->session->get('datechoice'));
         $reservation->setQuantity($this->session->get('quantity'));
@@ -95,8 +120,8 @@ class ReservationController extends AbstractController
         $reservation->setUser($this->getUser());
         $reservation->setIspaid(false);
         $reservation->setCreatedat($date);
+        $reservation->setAddressReservation($addressReservation);
         $reservation->setTotal($entryPrice * $this->session->get('quantity'));
-
         $this->entityManager->persist($reservation);
         $this->entityManager->flush();
 
