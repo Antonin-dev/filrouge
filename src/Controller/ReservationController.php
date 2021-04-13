@@ -2,19 +2,21 @@
 
 namespace App\Controller;
 
-use App\Service\Mailjet;
-use App\Entity\Address;
+use DateTime;
+use Stripe\Stripe;
 use App\Entity\Parc;
+use App\Entity\Address;
+use App\Service\Mailjet;
 use App\Entity\Reservation;
+use Stripe\Checkout\Session;
 use App\Form\ReservationType;
 use App\Service\ParcCapacity;
-use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 class ReservationController extends AbstractController
@@ -112,13 +114,17 @@ class ReservationController extends AbstractController
         $reservation->setCreatedat($date);
         $reservation->setAddressReservation($addressReservation);
         $reservation->setTotal($entryPrice * $this->session->get('quantity'));
-        $this->entityManager->persist($reservation);
-        $this->entityManager->flush();
+
+
+        
+
+        // $this->entityManager->persist($reservation);
+        // $this->entityManager->flush();
 
     
 
-        $mailjet = new Mailjet;
-        $mailjet->reservationEmail($this->getUser()->getEmail(), $this->getUser()->getFirstName(), $reservation->getNumberticket(), date_format($reservation->getDatechoice(), 'd/m/Y'), $reservation->getQuantity());
+        // $mailjet = new Mailjet;
+        // $mailjet->reservationEmail($this->getUser()->getEmail(), $this->getUser()->getFirstName(), $reservation->getNumberticket(), date_format($reservation->getDatechoice(), 'd/m/Y'), $reservation->getQuantity());
         
 
 
