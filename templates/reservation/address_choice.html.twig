@@ -5,12 +5,13 @@
 {% block content %}
 
 <div class="container-address mt-4 bg-info p-2 rounded-3 text-white">
-        <h1>Choisissez votre adresse de facturation</h1>       
+        <h1 class="text-center">Choisissez votre adresse de facturation</h1>       
         <hr>
             <div class="row">
+            <div class="col-md-12 text-center card-address">
                 {% for address in app.user.addresses %}
-                    <div class="col-md-4 text-center">
-                        <div class="card" style="width: 18rem;">
+                    
+                        <div class="card ms-1" style="width: 18rem;">
                                 <div class="card-body text-dark">
                                     <h5 class="card-title">{{ address.nameaddress }}</h5>
                                     <p class="card-text">{{ address.address }}, <br>
@@ -19,8 +20,9 @@
                                     <a href="{{path('reservation_recap', {'addressid' : address.id})}}" class="btn btn-success">Choisir</a>
                                 </div>
                         </div>
-                    </div>
+                    
                 {% endfor %}
+                </div>
             </div>
         
 </div>

@@ -6,6 +6,12 @@
     background-size: cover;
 }
 
+@mixin address-arround {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Train+One&display=swap');
 
 
@@ -238,6 +244,11 @@ body{
 
     
 }
+
+.card-address{
+    @include address-arround;
+}
+
     
 
 

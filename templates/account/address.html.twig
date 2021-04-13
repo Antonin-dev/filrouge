@@ -17,8 +17,9 @@
             </p>
         {% else %}
             <div class="row">
+            <div class="col-md-12 text-center card-address">
                 {% for address in app.user.addresses %}
-                    <div class="col-md-4 text-center">
+                    
                         <div class="card" style="width: 18rem;">
                                 <div class="card-body text-dark">
                                     <h5 class="card-title">{{ address.nameaddress }}</h5>
@@ -28,8 +29,9 @@
                                     <a href="{{path('account_address_edit', {'id' : address.id})}}">Modifier</a> | <a href="{{path('account_address_delete', {'id' : address.id})}}">Supprimer</a>
                                 </div>
                         </div>
-                    </div>
-                {% endfor %}
+                  
+                {% endfor %}  
+                </div>
             </div>
         {% endif %}
 </div>
