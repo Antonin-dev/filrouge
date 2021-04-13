@@ -7,6 +7,7 @@ use App\Entity\Address;
 use App\Entity\Parc;
 use App\Entity\Reservation;
 use App\Form\ReservationType;
+use App\Service\ParcCapacity;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,7 +32,7 @@ class ReservationController extends AbstractController
     /**
      * @Route("/reservation", name="reservation")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, ParcCapacity $parcCapacity): Response
     {
         $notification = null;
         $date = new DateTime();
@@ -43,20 +44,9 @@ class ReservationController extends AbstractController
 
             if ($form->get('datechoice')->getData() > $date) {
 
-                $reservationJour = $form->get('quantity')->getData();
-
-                $capacityParc = $this->entityManager->getRepository(Parc::class)->findOneBy([
-                    'name' => 'jurassicpark'
-                ])->getCapacity();
-                $reservations = $this->entityManager->getRepository(Reservation::class)->findBy([
-                    'datechoice' => $form->get('datechoice')->getData()
-                ]);
-
-                foreach ($reservations as $reservation) {
-                    $reservationJour += $reservation->getQuantity();
-                }
-
-                if ($reservationJour < $capacityParc) {
+                $resultCapacity = $parcCapacity->CapacityControl($form->get('datechoice')->getData(), $form->get('quantity')->getData());
+                
+                if ($resultCapacity) {
                     $this->session->set('datechoice', $form->get('datechoice')->getData());
                     $this->session->set('quantity', $form->get('quantity')->getData());
                     
@@ -108,7 +98,7 @@ class ReservationController extends AbstractController
     public function recap($addressid): Response
     {
         $date = new DateTime();
-        $entryPrice = $this->entityManager->getRepository(Parc::class)->findOneBy(['name' => 'jurassicpark'])->getPrice();
+        $entryPrice = $this->entityManager->getRepository(Parc::class)->findOneBy(['name' => 'jurassicworld'])->getPrice();
         $addressReservation = $this->entityManager->getRepository(Address::class)->findOneBy([
             'id' => $addressid
         ]);
