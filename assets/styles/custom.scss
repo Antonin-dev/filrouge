@@ -12,7 +12,7 @@
     align-items: center;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Train+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
 
 
 
@@ -40,6 +40,7 @@ body{
    
     background-image: url(../../public/assets/img/pexels-oliver-sjöström-931007.jpg);
     @include bg-image;
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -47,7 +48,12 @@ body{
 /*------------------------------ NAVBAR--------------------------------------------- */
 .navbar{
 
-    font-family: 'Train One', cursive;
+    font-family: 'Open Sans', sans-serif;
+    
+    .container-fluid{
+        display: flex;
+        align-items: center;
+    }
 }
 
 .img-navbar{
