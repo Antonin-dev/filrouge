@@ -53,21 +53,20 @@ body{
     .container-fluid{
         display: flex;
         align-items: center;
+
+        .img-navbar{
+            width: 80px;
+        }
+
+        .swup-control{
+            display: flex;
+
+            #lien{
+
+                text-decoration: none;   
+            }
+        }       
     }
-}
-
-.img-navbar{
-    width: 80px;
-}
-
-
-#lien{
-
-    text-decoration: none;   
-}
-
-.swup-control{
-    display: flex;
 }
 
 @media screen  and (min-width:992px){
@@ -142,11 +141,7 @@ body{
 @media screen and (min-width:768px) {
    .card-perso{
     height: 405px;
-
-
    } 
-    
-
 }
 
 .image-full{
@@ -175,20 +170,6 @@ body{
     
 }
 
-
-
-
-
-/* Item Mon compte */
-
-.account-item{
-    background-color: $light;  
-    height: 160px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-}
 
 
 // -----------------------------------Carte Google--------------------------
@@ -225,8 +206,17 @@ body{
  }
 
 //  ---------------------------------------------Mon compte -----------------------------------
+/* Item Mon compte */
+
 
 .account-item {
+
+    background-color: $light;  
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
 
     a{
         text-decoration: none;
