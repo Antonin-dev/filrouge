@@ -17,6 +17,7 @@
                 <th>Crée le</th>
                 <th>Quantité</th>
                 <th>Total</th>
+                <th>Qr-code</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@
                     <td>{{reservation.createdat|date('d/m/Y')}} à {{reservation.createdat|date('H:i:s')}}</td>
                     <td>{% if reservation.quantity == 1 %}1 place {% else %}{{reservation.quantity}} places{% endif %}</td>
                     <td>{{(reservation.total / 100)|number_format(2, ',', '.')}} €</td>
+                    <td><a href="/assets/qr-code/{{reservation.qrcode}}" target='_blank' class='btn btn-danger btn-sm'>Mon billet</a></td>
                 </tr>   
             {% endfor %}
             
