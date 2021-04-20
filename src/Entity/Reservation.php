@@ -62,6 +62,11 @@ class Reservation
      */
     private $stripesession;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $qrcode;
+
     public function __toString()
     {
         return $this->getDatechoice();
@@ -176,6 +181,18 @@ class Reservation
     public function setStripesession(?string $stripesession): self
     {
         $this->stripesession = $stripesession;
+
+        return $this;
+    }
+
+    public function getQrcode(): ?string
+    {
+        return $this->qrcode;
+    }
+
+    public function setQrcode(?string $qrcode): self
+    {
+        $this->qrcode = $qrcode;
 
         return $this;
     }

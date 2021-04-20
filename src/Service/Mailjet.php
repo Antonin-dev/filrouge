@@ -42,7 +42,7 @@ class Mailjet
     }
 
 
-    public function reservationEmail($email, $name, $numberResa, $date, $quantity)
+    public function reservationEmail($email, $name, $numberResa, $date, $quantity, $qrcode)
     {
         $mj = new Client($this->apiKey, $this->apiKeySecret, true, ['version' => 'v3.1']);
 
@@ -66,7 +66,8 @@ class Mailjet
                 "name" => $name,
                 "numberresa" => $numberResa,
                 "date" => $date,
-                "quantity" => $quantity
+                "quantity" => $quantity,
+                "qrcode" => '<img src="http://127.0.0.1:8000/assets/qr-code/' . $qrcode . '"></img>'
               ]
             ]
           ]
