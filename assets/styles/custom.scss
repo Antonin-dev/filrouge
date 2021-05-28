@@ -18,7 +18,8 @@
 
 // --------------------------------COULEUR----------------------------------------
 
-$secondary:  #06162be7;
+$secondary:  #f8e9e9;
+$primary:  #06162be7;
 $light: #f8e9e9;
 $success : #19620f;
 $info: rgba(128, 128, 128, 0.801);
@@ -33,12 +34,17 @@ $info: rgba(128, 128, 128, 0.801);
     padding: 0;
     margin: 0;
 }
+// Permet d'avoir le main qui ne passe pas sous la navbar
+.main-content{
+    padding-top: 79px;
+}
+
 
 
 
 body{
    
-    background-image: url(../../public/assets/img/pexels-oliver-sjöström-931007.jpg);
+    background-image: url(../../public/assets/img/background-retouche.jpg);
     @include bg-image;
     font-family: 'Roboto', sans-serif;
 }

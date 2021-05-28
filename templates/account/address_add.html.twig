@@ -4,10 +4,12 @@
 
 {% block content %}
 
-    <div class="container-address mt-4 bg-info p-2 text-white rounded-3">
+    <div class="container-address mt-4 bg-secondary p-2 text-primary rounded-3">
+    <div class="col-md-12 d-flex justify-content-between">
         <h1>Ajouter une addresse</h1>
-        <a href="{{path('account_address')}}" class="btn btn-secondary">Retour</a></br> 
-        <hr>
+        <a href="{{path('account')}}"><img src="{{asset('assets/img/close.svg')}}" alt="" width="20px"></a>
+    </div>
+    <hr>
         {{ form_start(form) }}
 
             <div class="row">

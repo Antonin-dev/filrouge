@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Attraction;
 use App\Entity\Header;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,9 +26,13 @@ class HomeController extends AbstractController
     {
 
         $headers = $this->entityManager->getRepository(Header::class)->findAll();
+        $bestAttractions = $this->entityManager->getRepository(Attraction::class)->findBy([
+            'isBest' => 1
+        ]);
 
         return $this->render('home/index.html.twig', [
-            'headers' => $headers
+            'headers' => $headers,
+            'bestAttractions' => $bestAttractions
         ]);
     }
 }

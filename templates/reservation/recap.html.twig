@@ -8,13 +8,13 @@
 
 {% block content %}
 
-    <div class="container-address mt-4 text-center d-flex flex-column align-items-center bg-info text-white rounded-3">
+    <div class="container-address mt-4 text-center d-flex flex-column align-items-center bg-secondary text-primary rounded-3">
         
         <h2>Pret à réserver {{reservation.user.firstname}}</h2>
 
         <p>Vérifier vos informations : <br>
 
-        <div class="card col-6 bg-dark mb-4" style="width: 18rem;">
+        <div class="card col-6 bg-dark mb-4 text-white" style="width: 18rem;">
             <img class="card-img-top" src="{{asset('assets/img/logo_jw.svg')}}" alt="logo jurassic world">
             <div class="card-body">
                 <h5 class="card-title">{{reservation.user.firstname}} {{reservation.user.lastname}}</h5>

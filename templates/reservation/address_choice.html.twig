@@ -4,9 +4,14 @@
 
 {% block content %}
 
-<div class="container-address mt-4 bg-info p-2 rounded-3 text-white">
-        <h1 class="text-center">Choisissez votre adresse de facturation</h1>       
-        <hr>
+<div class="container-address mt-4 bg-secondary p-2 rounded-3 text-primary">
+         <div class="col-md-12 d-flex justify-content-between">
+            <h1 class="text-center">Choisissez votre adresse de facturation</h1> 
+            <a href="{{path('reservation')}}"><img src="{{asset('assets/img/close.svg')}}" alt="" width="20px"></a>
+
+        </div>
+              
+        
             <div class="row">
             <div class="col-md-12 text-center card-address">
                 {% for address in app.user.addresses %}

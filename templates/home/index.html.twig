@@ -2,71 +2,61 @@
 
 {% block title %}Bienvenue - Jurassic World{% endblock %}
 {% block effet %}{% endblock %}
+
+
 {% block carousel %}{% endblock %}
 
 {% block content %}
-  <!-- Three columns of text below the carousel -->
-        <div class="row">
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-                <h2>Heading</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-                <h2>Heading</h2>
-                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-                <h2>Heading</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
-
-
-        <!-- START THE FEATURETTES -->
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    <h2 class="text-center mt-3 mb-4 text-primary bg-secondary rounded-2">Nos attractions du moment</h2>
+    <div class="row attraction-container d-flex justify-content-center">
+        {% for attraction in bestAttractions %}
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                {% include "attraction/single_attraction.html.twig" %}
             </div>
-            <div class="col-md-5">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-            </div>
+        {% endfor %}
+    </div>
+                           
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette text-primary bg-secondary rounded-2 p-2 d-flex justify-content-center align-items-center">
+        <div class="col-md-7">
+            <h2 class="featurette-heading mt-1">Une experience unique au monde</h2>
+            <p class="lead">Venez découvrir l'experience la plus extraordinaire, dans un parc de 2000 hectar situé dans les bahamas. Vous profiterez sur place de restauration rapide, ainsi que les plus grande table acompagné de chez etoilé. Un service de bateau navette est mis en place toute les heures pour relier le continent au parc</p>
         </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-            </div>
-            <div class="col-md-5 order-md-1">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-            </div>
+        <div class="col-md-5 ">
+            <img class="img-fluid rounded-2" src="assets/img/Jurassic-world-park.jpg" alt="parc avec client" >
         </div>
+    </div>
 
-        <hr class="featurette-divider">
+    <hr class="featurette-divider">
 
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-            </div>
-            <div class="col-md-5">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-            </div>
+    <div class="row featurette text-primary bg-secondary rounded-2 p-2 d-flex justify-content-center align-items-center">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading mt-1">Jurassic restaurant</h2>
+            <p class="lead">Jurassic restaurant est un lieu improbable où l’on vient manger, boire, rire et se régaler de plats signés jurassic, un clin d’œil à leur passé gastronomique au Jardin des Sens. Un lieu dédié au plaisir dans l’assiette, mais aussi à une atmosphère décontractée,
+où tout les carnivors se retrouve dans une mixité hétéroclite et amusante.</p>
         </div>
+        <div class="col-md-5 order-md-1">
+            <img class="img-fluid rounded-2" src="assets/img/Jurassic-world-restaurant.jpg" alt="parc avec client" >
+        </div>
+    </div>
 
-        <hr class="featurette-divider">
+    <hr class="featurette-divider">
 
-        <!-- /END THE FEATURETTES -->
+    <div class="row featurette text-primary bg-secondary rounded-2 p-2 d-flex justify-content-center align-items-center">
+        <div class="col-md-7">
+            <h2 class="featurette-heading mt-1">Votre sécurite, notre priorité</h2>
+            <p class="lead">En visitant notre parc, nous vous garantissons une sécurité repondant au exigeance gouvernemental lié au dinosaure que vous rencontrez dans le parc. Votre famille se trouve en sécurite dans notre parc acompagne de nos équipes</p>
+        </div>
+        <div class="col-md-5 ">
+            <img class="img-fluid rounded-2" src="assets/img/Jurassic-world-enfant.jpg" alt="parc avec client" >
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
 {% endblock %}

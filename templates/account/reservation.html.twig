@@ -3,12 +3,13 @@
 {% block title %}Mes réservation - Jurassic World{% endblock %}
 
 {% block content %}
-<div class="text-light bg-info p-2 mt-2 rounded-3">
-    <h1>Mes réservations</h1>
-    <p>C'est dans cet espace que vous allez pouvoir consulter vos réservations</p>
-    <a href="{{path('account')}}" class="btn btn-secondary btn-sm float-start">Retour</a></br> 
-    
-    <table class="table mt-4 text-white">
+<div class="text-primary bg-secondary p-2 mt-2 rounded-3">
+    <div class="col-md-12 d-flex justify-content-between">
+        <h2>Mes réservations</h2>
+        <a href="{{path('account')}}"><img src="{{asset('assets/img/close.svg')}}" alt="" width="20px"></a>
+    </div>   
+    <p>C'est dans cet espace que vous allez pouvoir consulter vos réservations</p>  
+    <table class="table mt-4">
         <thead>
             <tr>
                 <th>Numéro de réservation</th>

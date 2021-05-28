@@ -1,7 +1,6 @@
-
- <div class="card-perso mb-2 text-center rounded-2 bg-light d-flex flex-column justity-content-around">
-    <img src="/uploads/{{attraction.picture}}" class="card-img-top img-card "  alt="{{attraction.name}}">
-    <div class="card-body d-flex flex-column justify-content-around">
+<div class="card-perso mb-2 p-2 text-center text-primary rounded-2 bg-light d-flex flex-column justity-content-around">
+  <img src="/uploads/{{attraction.picture}}" class="card-img-top img-card " alt="{{attraction.name}}">
+  <div class="card-body d-flex flex-column justify-content-around">
     <span class="badge 
     {% if attraction.category == 'Vitesse' %}
         bg-warning
@@ -13,10 +12,11 @@
         bg-primary
     {% endif %}
     ">{{attraction.category}}</span>
-      <h5 class="card-title">{{attraction.name}}</h5>
-      <p class="card-text">{{attraction.subtitle}}</p>
-      <div class="d-grid gap-2">
-        <a href="{{ path('attraction_detail', { 'slug' : attraction.slug } ) }}" class="text-white btn btn-success">Découvrir</a>
-      </div>
+    <h5 class="card-title">{{attraction.name}}</h5>
+    <p class="card-text">{{attraction.subtitle}}</p>
+    <div class="d-grid gap-2">
+      <a href="{{ path('attraction_detail', { 'slug' : attraction.slug } ) }}"
+        class="text-white btn btn-success">Découvrir</a>
     </div>
   </div>
+</div>

@@ -2,14 +2,19 @@
 {% block effet %}{% endblock %}
 {% block content %}
 
-<div class="bg-info p-2 mt-3 rounded-3 text-white">
-    <h1 class="text-white mt-3 ">Inscription</h1>
-        {% if notification %}
-            <div class="alert alert-info">{{notification}}</div>
-        {% endif %}
+<div class="bg-secondary p-2 mt-3 rounded-3 text-white">
+
+    <div class="col-md-12 d-flex justify-content-between">
+        <h2 class="text-center">Inscription</h2> 
+        <a href="{{path('home')}}"><img src="{{asset('assets/img/close.svg')}}" alt="" width="20px"></a>
+
+    </div>
+    {% if notification %}
+        <div class="alert alert-info">{{notification}}</div>
+    {% endif %}
         <div class="container-form-inscription">
-            {{ form(form) }}
-        </div>
+    {{ form(form) }}
+    </div>
 </div>
     
     
