@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Reservation;
+use App\Service\EligibilityComment;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,11 +25,18 @@ class AccountReservationController extends AbstractController
     public function index(): Response
     {
         $reservations = $this->entityManager->getRepository(Reservation::class)->findBy([
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            // 'ispaid' => true
         ]);
 
+        $eligibilityControle = new EligibilityComment($reservations);
+        $eligibilityArray = $eligibilityControle->controlEligibility();
+
+        // dd($reservations);
+
         return $this->render('account/reservation.html.twig', [
-            'reservations' => $reservations
+            'reservations' => $reservations,
+            'commentEligibility' => $eligibilityArray
         ]);
     }
 }

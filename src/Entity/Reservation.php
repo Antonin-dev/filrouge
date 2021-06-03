@@ -67,6 +67,11 @@ class Reservation
      */
     private $qrcode;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Ratings::class, mappedBy="reservation", cascade={"persist", "remove"})
+     */
+    private $ratings;
+
     public function __toString()
     {
         return $this->getDatechoice();
@@ -193,6 +198,28 @@ class Reservation
     public function setQrcode(?string $qrcode): self
     {
         $this->qrcode = $qrcode;
+
+        return $this;
+    }
+
+    public function getRatings(): ?Ratings
+    {
+        return $this->ratings;
+    }
+
+    public function setRatings(?Ratings $ratings): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($ratings === null && $this->ratings !== null) {
+            $this->ratings->setReservation(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($ratings !== null && $ratings->getReservation() !== $this) {
+            $ratings->setReservation($this);
+        }
+
+        $this->ratings = $ratings;
 
         return $this;
     }

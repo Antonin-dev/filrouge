@@ -3,13 +3,14 @@
 {% block title %}Mes réservation - Jurassic World{% endblock %}
 
 {% block content %}
+ 
 <div class="text-primary bg-secondary p-2 mt-2 rounded-3">
     <div class="col-md-12 d-flex justify-content-between">
         <h2>Mes réservations</h2>
         <a href="{{path('account')}}"><img src="{{asset('assets/img/close.svg')}}" alt="" width="20px"></a>
     </div>   
     <p>C'est dans cet espace que vous allez pouvoir consulter vos réservations</p>  
-    <table class="table mt-4">
+    <table class="table mt-4 text-center">
         <thead>
             <tr>
                 <th>Numéro de réservation</th>
@@ -19,10 +20,12 @@
                 <th>Quantité</th>
                 <th>Total</th>
                 <th>Qr-code</th>
+                <th>Avis</th>
             </tr>
         </thead>
         <tbody>
             {% for reservation in reservations %}
+      
                 <tr>
                     <td>{{reservation.numberticket}}</td>
                     <td>{{reservation.datechoice|date('d/m/Y')}}</td>
@@ -31,9 +34,17 @@
                     <td>{% if reservation.quantity == 1 %}1 place {% else %}{{reservation.quantity}} places{% endif %}</td>
                     <td>{{(reservation.total / 100)|number_format(2, ',', '.')}} €</td>
                     <td><a href="/assets/qr-code/{{reservation.qrcode}}" target='_blank' class='btn btn-danger btn-sm'>Mon billet</a></td>
+                    <td>
+                    {% if commentEligibility[reservation.numberticket] == 'eligible' %}
+                    <a href="{{path('ratting_add', {'id' : reservation.id})}}" class='btn btn-success btn-sm'>Laisser un commentaire</a>
+                    {% elseif commentEligibility[reservation.numberticket] == 'notEligible' %}     
+                    <a href="" class='btn btn-warning btn-sm'>Bientot disponible</a>
+                    {% elseif commentEligibility[reservation.numberticket] == 'isSaved'%}
+                           <button class="btn btn-info btn-sm">commentaire validé</button>
+                    {% endif %}
+                    </td>
                 </tr>   
-            {% endfor %}
-            
+            {% endfor %}            
         </tbody>
     </table>
 </div>
