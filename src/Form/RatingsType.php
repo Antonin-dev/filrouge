@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
 
 class RatingsType extends AbstractType
 {
@@ -16,13 +17,21 @@ class RatingsType extends AbstractType
     {
         $builder
             ->add('score', IntegerType::class, [
-                'label' => 'Indiquez votre évaluation',
+                'label' => 'Indiquez votre évaluation entre 1 et 5',
+                'attr' => [
+                    'min' => 1,
+                    'max' => 5
+                ]
             ])
             ->add('comment', TextareaType::class, [
                 'label' => 'Saisissez votre commentaire',
                 'attr' => [
                     'placeholder' => 'Votre commentaire'
-                ]
+                ],
+                'constraints' => new Length([
+                    'min' => 5,
+                    'max' => 300
+                ])
             ])
             ->add('submit', SubmitType::class, [
                 'label' => "Mettre à jour",

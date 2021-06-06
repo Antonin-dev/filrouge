@@ -13,7 +13,7 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Stint+Ultra+Condensed&display=swap');
 
 
 // --------------------------------COULEUR----------------------------------------
@@ -47,6 +47,10 @@ body{
     background-image: url(../../public/assets/img/background-retouche.jpg);
     @include bg-image;
     font-family: 'Roboto', sans-serif;
+
+    h1, h2{
+        font-family: 'Stint Ultra Condensed', cursive;
+    }
 }
 
 
@@ -54,7 +58,8 @@ body{
 /*------------------------------ NAVBAR--------------------------------------------- */
 .navbar{
 
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Stint Ultra Condensed', cursive;
+    font-size: 20px;
     
     .container-fluid{
         display: flex;

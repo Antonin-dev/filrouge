@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Ratings;
+use App\Entity\Reservation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -43,7 +44,7 @@ class RatingsRepository extends ServiceEntityRepository
             ->andWhere('r.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getOneOrNullResult()#
         ;
     }
     */

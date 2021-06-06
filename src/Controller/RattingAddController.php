@@ -21,23 +21,28 @@ class RattingAddController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager, $id): Response
     {
         $rating = new Ratings;
-        $reservation = $entityManager->getRepository(Reservation::class)->findOneBy([
-            'id' => $id
-        ]);
+        
         $form = $this->createForm(RatingsType::class, $rating);
-       
         $form->handleRequest($request);
-        // dd($this->getUser()->getFirstname());
+        
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $reservation = $entityManager->getRepository(Reservation::class)->findOneBy([
+            'id' => $id
+            ]);
             
             $rating->setDatecomment(new DateTime('now'));
-            $rating->setReservationname($this->getUser()->getFirstname());
+            $rating->setReservationname(ucfirst(strtolower($this->getUser()->getFirstname())));
             $rating->setReservation($reservation);
+            // dd($rating);
             $entityManager->persist($rating);
             $entityManager->flush();
+
             
             return $this->redirectToRoute('account_reservation');
         }
+
+        
 
         return $this->render('rating/rating_add.html.twig', [
             'form' => $form->createView()
