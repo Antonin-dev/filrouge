@@ -74,7 +74,7 @@ class Reservation
 
     public function __toString()
     {
-        return $this->getDatechoice();
+        return $this->getNumberticket();
     }
 
     public function getId(): ?int

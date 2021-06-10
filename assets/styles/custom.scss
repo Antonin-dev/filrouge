@@ -1,7 +1,7 @@
 // -----------------------------Mixin--------------------------------------------------
 
 @mixin bg-image {
-    background-position: center;
+    background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -40,17 +40,18 @@ $gray-800: #343a40;
 $gray-900: #212529;
 $black:    #000;
 
-$primary:       #06162be7;
-$secondary:     #f8e9e9;
+$primary:       #e6e4e4;
+$secondary:     #36453b;
 $success:       #2a5c23;
 $info:          rgba(128, 128, 128, 0.801);
 $warning:       $yellow;
 $danger:        $red;
-$light:         #f8e9e9;
+$light:         #f5f9e9;
 $dark:          $gray-900;
 $jeuneColor:    #8bc579;
 $vitesseColor:  rgb(207, 185, 88);
 $horreurColor:  rgb(172, 90, 90);
+$background:    #596869e5;
 
 $theme-colors: (
   "primary":    $primary,
@@ -63,7 +64,8 @@ $theme-colors: (
   "dark":       $dark,
   "jeuneAge":   $jeuneColor,
   "vitesse":    $vitesseColor,
-  "horreur":    $horreurColor
+  "horreur":    $horreurColor,
+  'background': $background
 );
 //----------------------------------Body-------------------------------------------
 
@@ -83,7 +85,8 @@ $theme-colors: (
 
 body{
    
-    background-image: url(../../public/assets/img/background-retouche.jpg);
+    background-image: url(../../public/assets/img/background_body.jpg);
+    // background-color: rgb(58, 56, 56)!important;
     @include bg-image;
     font-family: 'Roboto', sans-serif;
 

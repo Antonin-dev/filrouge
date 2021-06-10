@@ -1,54 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon compte - Jurassic World{% endblock %}
+{% block title %}Mon compte - Jurassic World
+{% endblock %}
 
 {% block content %}
 
 
-    <div class="col-md-12 mt-4 bg-secondary text-primary p-2 rounded-3">
-        <div class="col-md-12 d-flex justify-content-between">
-            <h2>Mon compte</h2>
-            <a href="{{path('home')}}"><img src="{{asset('assets/img/close.svg')}}" alt="" width="20px"></a>
-        </div>      
-        {% if is_granted('ROLE_ADMIN') %}
-        <a href="/admin">Vous etes admin acceder au back office</a></br> 
-        {% endif %}
-        <p>Bienvenue {{app.user.firstname}} {{app.user.lastname}} dans votre compte .</br> 
-        C'est dans cet espace que vous allez pouvoir gérer toutes vos informations personnelles.</br> 
-        {# La variable app comprend tout les details de la session #}</p>
-        
-        <hr>   
-
-        <div class="row">
-            <div class="col-md-4 mb-2">
-                <div class="account-item text-center d-flex flex-column">
-                    <div class="logo-compte">
-                        <img src="{{ asset('assets/img/padlock.png')}}" alt="">
-                    </div>
-                    <a class="text-primary" href="{{path('account_update_password')}}">Modifier mon mot de passe</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="account-item text-center mb-2 d-flex flex-column">
-                    <div class="logo-compte">
-                        <img src="{{ asset('assets/img/address.png')}}" alt="">
-                    </div>
-                    <a class="text-primary" href="{{path('account_address')}}">Mes adresses</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="account-item text-center d-flex flex-column">
-                    <div class="logo-compte">
-                        <img src="{{ asset('assets/img/shopping-en-ligne.png')}}" alt="">
-                    </div>
-                    
-                    <a class="text-primary" href="{{path('account_reservation')}}">Mes commandes</a>
-                </div>
-            </div>
-        </div>
-
-        <hr>
-    </div>
-    
-{% endblock %}
-
+	<div class="col-md-12 mt-4 bg-secondary text-primary p-2 rounded-3">
+		<div class="col-md-12 d-flex justify-content-between">
+			<h2>Mon compte</h2>
+			<a href="{{path('home')}}"><img src="{{asset('assets/img/close.svg')}}" alt="" width="20px"></a>
+		</div>
+		{% if is_granted('ROLE_ADMIN') %}
+			<a href="/admin">Vous etes admin acceder au back office</a>
+		</br>
+	{% endif %}
+	<p>Bienvenue
+		{{app.user.firstname}}
+		{{app.user.lastname}}dans votre compte .
+	</p>
+</br>
+<p>C'est dans cet espace que vous allez pouvoir gérer toutes vos informations personnelles.</p></br>{# La variable app comprend tout les details de la session #}</p><hr><div class="row"><div class="col-md-4 mb-2">
+<div class="account-item text-center d-flex flex-column">
+	<div class="logo-compte">
+		<img src="{{ asset('assets/img/account_padlock.png')}}" alt="">
+	</div>
+	<a class="text-dark" href="{{path('account_update_password')}}">Modifier mon mot de passe</a>
+</div></div><div class="col-md-4">
+<div class="account-item text-center mb-2 d-flex flex-column">
+	<div class="logo-compte">
+		<img src="{{ asset('assets/img/account_address.png')}}" alt="">
+	</div>
+	<a class="text-dark" href="{{path('account_address')}}">Mes adresses</a>
+</div></div><div class="col-md-4">
+<div class="account-item text-center d-flex flex-column">
+	<div class="logo-compte">
+		<img src="{{ asset('assets/img/shopping-en-ligne.png')}}" alt="">
+	</div>
+	<a class="text-dark" href="{{path('account_reservation')}}">Mes commandes</a>
+</div></div>{% endblock %}

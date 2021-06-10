@@ -1,21 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Spectacle - Jurassic World{% endblock %}
+{% block title %}Spectacle - Jurassic World
+{% endblock %}
 {% block effet %}{% endblock %}
 {% block content %}
 
-{% for spectacle in spectacles %}
+	{% for spectacle in spectacles %}
 
-<div class="row bg-secondary text-primary p-2 mt-3 rounded-2">
-    <div class="col-md-7 my-4 d-flex flex-column justify-content-center">
-        <h2 class="text-center">{{spectacle.name}}</h2>
-        <h3>{{spectacle.subtitle}}</h3>
-        <h4>{{spectacle.horaire}}</h4>
-        <p>{{spectacle.description}}</p>
-    </div>
-        <div class="col-md-5 image-spectacle my-4 rounded-3" style="background-image: url(/uploads/{{spectacle.picture}});"></div>
+		<div class="row bg-secondary text-primary p-2 mt-3 rounded-2">
+			<div class="col-md-7 my-4 d-flex flex-column justify-content-center">
+				<h2 class="text-center">{{spectacle.name}}</h2>
+				<h3>{{spectacle.subtitle}}</h3>
+				<h4>{{spectacle.horaire}}</h4>
+				<p>{{spectacle.description}}</p>
+			</div>
+			<div class="col-md-5 image-spectacle my-4 rounded-3" style="background-image: url(/uploads/{{spectacle.picture}});"></div>
 
-</div> 
-{% endfor %}
+		</div>
+	{% endfor %}
 
 {% endblock %}

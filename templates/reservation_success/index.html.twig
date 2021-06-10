@@ -1,32 +1,46 @@
 {% extends 'base.html.twig' %}
 
 {% block effet %}{% endblock %}
-{% block title %}Réservation validé - Jurassic World{% endblock %}
+{% block title %}Réservation validé - Jurassic World
+{% endblock %}
 
 {% block content %}
 
-    <div class="container-address mt-4 text-center d-flex flex-column align-items-center bg-secondary text-primary rounded-3">
-        
-        <img src="{{asset('assets/img/jurassic_world_bandeau.jpg')}}" alt="" class="img-fluid mt-2 rounded-2">
+	<div class="container-address text-center mt-3 d-flex flex-column align-items-center bg-secondary text-primary rounded-3">
 
-        <h2>Bienvenue {{reservation.user.firstname}} {{reservation.user.lastname}}</h2>
-        <p>Votre réservation est bien confirmé</p>
-        <p>Gardez bien votre numéro de commande il vous sera demandé pour acceder au parc :</p>
-        <p>{{reservation.numberticket}}</p>
-        <a href="/assets/qr-code/{{reservation.qrcode}}"><img src="/assets/qr-code/{{reservation.qrcode}}" alt="" srcset=""></a>
+		<img src="{{asset('assets/img/jurassic_world_bandeau.jpg')}}" alt="" class="img-fluid mt-2 rounded-2">
 
-        <p>Resumé de votre commande : <br>
-        {{reservation.user.email}} <br>
-                <p>Addresse de facturation : <br> 
-                {{reservation.AddressReservation|replace({'[br]' : '<br/>'})|raw}}
-                </p>
-                Date d'entrée au parc : {{reservation.datechoice|date("d/m/Y")}} <br>
-                <hr>
-                Nombre de personne : {{reservation.quantity}} <br>
-                Prix entrée au parc : {{ (price / 100)|number_format(2, ',', '.') }} €.<br>
-                Total : {{ (reservation.total / 100)|number_format(2, ',', '.') }} €. <br>
-                <hr>
-        </p>
-        <a href="{{path('account_reservation')}}" class="btn btn-success mb-2">Voir mes commandes</a>
-    </div>
-{% endblock %}
+		<h2>Bienvenue
+			{{reservation.user.firstname}}
+			{{reservation.user.lastname}}</h2>
+		<p>Votre réservation est bien confirmé</p>
+		<p>Gardez bien votre numéro de commande il vous sera demandé pour acceder au parc :</p>
+		<p>{{reservation.numberticket}}</p>
+		<a href="/assets/qr-code/{{reservation.qrcode}}"><img src="/assets/qr-code/{{reservation.qrcode}}" alt="" srcset=""></a>
+
+		<p>Resumé de votre commande :
+			<br>
+			{{reservation.user.email}}<br>
+		</p>
+		<p>Addresse de facturation :
+			<br>
+			{{reservation.AddressReservation|replace({'[br]' : '<br/>'})|raw}}
+		</p>
+		Date d'entrée au parc :
+		{{reservation.datechoice|date("d/m/Y")}}
+		<br>
+		<hr>
+		Nombre de personne :
+		{{reservation.quantity}}
+		<br>
+		Prix entrée au parc :
+		{{ (price / 100)|number_format(2, ',', '.') }}
+		€.<br>
+		Total :
+		{{ (reservation.total / 100)|number_format(2, ',', '.') }}
+		€.
+		<br>
+		<hr>
+	</p>
+	<a href="{{path('account_reservation')}}" class="btn btn-success mb-2">Voir mes commandes</a>
+</div>{% endblock %}
