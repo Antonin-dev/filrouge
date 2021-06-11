@@ -17,7 +17,7 @@ class QrcodeService
 
     public function qrcode($reservation)
     {
-        $url = "https://www.google.fr/search?q=";
+        $url = $_ENV['DOMAIN_URL']."reservation/control/qrcode/";
         $path = dirname(__DIR__, 2) . '/public/assets/';
         $namepng = uniqid() . '.png';
 
