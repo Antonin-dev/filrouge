@@ -7,8 +7,8 @@ use Mailjet\Resources;
 
 class Mailjet
 {
-    private $apiKey = '694b656cac04044e5730ca9c68774e39';
-    private $apiKeySecret = 'a0345162a44c19c78221e119b16548eb';
+    private $apiKey = '';
+    private $apiKeySecret = '';
 
 
     public function sendWelcomeEmail($email, $name)
