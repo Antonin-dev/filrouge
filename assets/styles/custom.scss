@@ -85,12 +85,12 @@ $theme-colors: (
 
 body{
    
-    background-image: url(../../public/assets/img/background_body.jpg);
+    background-image: url(../../public/assets/img/background_bodycopie.png);
     // background-color: rgb(58, 56, 56)!important;
     @include bg-image;
     font-family: 'Roboto', sans-serif;
 
-    h1, h2{
+    h1, h2, .navbar{
         font-family: 'Stint Ultra Condensed', cursive;
     }
 }
@@ -100,7 +100,7 @@ body{
 /*------------------------------ NAVBAR--------------------------------------------- */
 .navbar{
 
-    font-family: 'Stint Ultra Condensed', cursive;
+    // font-family: 'Stint Ultra Condensed', cursive;
     font-size: 20px;
     
     .container-fluid{

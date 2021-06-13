@@ -45,6 +45,7 @@ class Mailjet
     public function reservationEmail($email, $name, $numberResa, $date, $quantity, $qrcode)
     {
         $mj = new Client($this->apiKey, $this->apiKeySecret, true, ['version' => 'v3.1']);
+        $qrcodeUrl = $_ENV['DOMAIN_URL'] . 'assets/qr-code/' . $qrcode;
 
         $body = [
           'Messages' => [
@@ -67,7 +68,7 @@ class Mailjet
                 "numberresa" => $numberResa,
                 "date" => $date,
                 "quantity" => $quantity,
-                "qrcode" => '<img src="http://127.0.0.1:8000/assets/qr-code/' . $qrcode . '"></img>'
+                "qrcode" => '<img src="' . $qrcodeUrl . '"></img>'
               ]
             ]
           ]

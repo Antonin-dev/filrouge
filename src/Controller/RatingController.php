@@ -25,12 +25,16 @@ class RatingController extends AbstractController
     {
         $ratings = $this->entityManager->getRepository(Ratings::class)->findAll();
         $sum = 0;
-        foreach ($ratings as $rating) {
-            $sum+=$rating->getScore();
+
+        if (empty($ratings)) {
+            return $this->redirectToRoute('home');  
+        }else{
+            foreach ($ratings as $rating) {
+                $sum+=$rating->getScore();
+            }
+            $roundAverageStar = round($sum / count($ratings));
+            $round = round($sum / count($ratings), 2) ;
         }
-        $roundAverageStar = round($sum / count($ratings));
-        $round = round($sum / count($ratings), 2) ;
-        // dd($round);
 
         return $this->render('rating/index.html.twig',[
             'ratings' => $ratings,

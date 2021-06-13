@@ -10,6 +10,7 @@
 			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 		{% endif %}
 
+
 		{% if app.user %}
 			<div class="mb-3">
 				You are logged in as
@@ -21,6 +22,11 @@
 			<h2>Connexion</h2>
 			<a href="{{path('home')}}"><img src="{{asset('assets/img/close.svg')}}" alt="page précédente" width="20px"></a>
 		</div>
+
+
+		{% for message in app.flashes('notice') %}
+			<div class="alert alert-info">{{message}}</div>
+		{% endfor %}
 
 		<div class="container-form-connexion ">
 			<h4 class="mb-3 font-weight-normal">Merci de vous connecter</h4>
