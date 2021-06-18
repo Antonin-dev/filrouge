@@ -5,7 +5,7 @@
 
 {% block content %}
 
-	<div class="text-white bg-secondary p-2 mt-2 rounded-3">
+	<div class="col-12 text-white bg-secondary p-2 mt-2 rounded-3">
 		<div class="col-md-12 d-flex justify-content-between">
 			<h2>Mes réservations</h2>
 			<a href="{{path('account')}}"><img src="{{asset('assets/img/close.svg')}}" alt="page précédente" width="20px"></a>
@@ -14,14 +14,14 @@
 		<table class="table mt-4 text-center text-white">
 			<thead>
 				<tr>
-					<th>Numéro de réservation</th>
-					<th>Date de séjour</th>
-					<th>Payé</th>
-					<th>Crée le</th>
-					<th>Quantité</th>
-					<th>Total</th>
-					<th>Qr-code</th>
-					<th>Avis</th>
+					<th scope="col">Numéro de réservation</th>
+					<th scope="col">Date de séjour</th>
+					<th scope="col">Payé</th>
+					<th scope="col">Crée le</th>
+					<th scope="col">Quantité</th>
+					<th scope="col">Total</th>
+					<th scope="col">Qr-code</th>
+					<th scope="col">Avis</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -55,7 +55,9 @@
 							{% elseif commentEligibility[reservation.numberticket] == 'notEligible' %}
 								<a href="" class='btn btn-warning btn-sm'>Bientot disponible</a>
 							{% elseif commentEligibility[reservation.numberticket] == 'isSaved'%}
-								<button class="btn btn-info btn-sm">commentaire validé</button>
+								<button class="btn btn-info btn-sm">Commentaire validé</button>
+							{% elseif commentEligibility[reservation.numberticket] == 'notPaid'%}
+								<button class="btn btn-info btn-sm">Non éligible</button>
 							{% endif %}
 						</td>
 					</tr>

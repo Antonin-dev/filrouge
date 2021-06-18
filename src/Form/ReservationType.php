@@ -16,20 +16,20 @@ class ReservationType extends AbstractType
     {
         $builder
             
-            ->add('datechoice', DateType::class, [
-                'label' => 'Date du séjour',
-                'widget' => 'single_text'
-            ])
             ->add('quantity', IntegerType::class,[
                 'label' => 'Choisissez le nombre de place',
                 'attr' => [
                     'placeholder' => 'Quantité'
                 ]
             ])
+            ->add('datechoice', DateType::class, [
+                'label' => 'Date du séjour',
+                'widget' => 'single_text'
+            ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Valider',
+                'label' => 'Je réserve',
                 'attr' => [
-                    'class' => 'btn btn-success btn-block mt-1'
+                    'class' => 'btn btn-success btn-block mt-2 col-12'
                 ]
             ])
             

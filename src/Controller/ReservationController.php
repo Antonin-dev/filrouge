@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ReservationController extends AbstractController
 {
@@ -52,12 +52,6 @@ class ReservationController extends AbstractController
                     $this->session->set('datechoice', $form->get('datechoice')->getData());
                     $this->session->set('quantity', $form->get('quantity')->getData());
                     
-                    if (!$this->getUser()->getAddresses()->getValues()) {
-
-                        return $this->redirectToRoute('account_address_add');
-                    
-                    }
-                    
                     return $this->redirectToRoute('reservation_address'); 
                 }
                 else{
@@ -86,6 +80,12 @@ class ReservationController extends AbstractController
      */
     public function addressChoice(): Response
     {
+
+        if (!$this->getUser()->getAddresses()->getValues()) {
+
+            return $this->redirectToRoute('account_address_add');
+        
+        }
 
         return $this->render('reservation/address_choice.html.twig');
     }
@@ -123,4 +123,22 @@ class ReservationController extends AbstractController
             'price' => $entryPrice
         ]);
     }
+
+     /**
+     * @Route("/api/price", name="api_price")
+     */
+    public function api(): Response
+    {
+        $parcPrice = $this->entityManager->getRepository(Parc::class)->findOneBy([
+            'name' => 'jurassicworld'
+        ])->getPrice();
+        $data = [
+            'price' => $parcPrice / 100
+        ];
+        // dd($parcPrice);
+
+        return new JsonResponse($data);
+
+    }
+
 }

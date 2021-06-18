@@ -24,7 +24,10 @@ class EligibilityComment
         $dateNow = new DateTime('now');
 
         foreach ($this->reservations as $reservation) {
-            if ($reservation->getDateChoice() < $dateNow && $reservation->getRatings() == null) {
+            if (!$reservation->getisPaid()) {
+                $result[$reservation->getNumberTicket()] = 'notPaid';
+            }
+            else if (($reservation->getDateChoice() < $dateNow && $reservation->getRatings() == null)) {
                 $result[$reservation->getNumberTicket()] = 'eligible';
             }
             else if ($reservation->getDateChoice() > $dateNow && $reservation->getRatings() == null){
