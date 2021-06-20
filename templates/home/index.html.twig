@@ -1,64 +1,49 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Bienvenue - Jurassic World
 {% endblock %}
 {% block effet %}{% endblock %}
-
-
 {% block carousel %}{% endblock %}
-
 {% block content %}
-	<h2 class="text-center mt-3 mb-4 text-primary bg-secondary rounded-2">Nos attractions du moment</h2>
-	<div class="row attraction-container d-flex justify-content-center">
-		{% for attraction in bestAttractions %}
-			<div class="col-sm-12 col-md-6 col-lg-4">
-				{% include "attraction/single_attraction.html.twig" %}
-			</div>
-		{% endfor %}
+<h2 class="text-center mt-3 mb-4 text-primary bg-secondary rounded-2">Nos attractions du moment</h2>
+<div class="row attraction-container d-flex justify-content-center">
+	{% for attraction in bestAttractions %}
+	<div class="col-sm-12 col-md-6 col-lg-4">
+		{% include "attraction/single_attraction.html.twig" %}
 	</div>
-
-
-	<!-- START THE FEATURETTES -->
-
-	<hr class="featurette-divider">
-
-	<div class="row featurette text-primary bg-secondary rounded-2 p-2 d-flex justify-content-center align-items-center">
-		<div class="col-md-7">
-			<h2 class="featurette-heading mt-1">Une experience unique au monde</h2>
-			<p class="lead">Venez découvrir l'experience la plus extraordinaire, dans un parc de 2000 hectar situé dans les bahamas. Vous profiterez sur place de restauration rapide, ainsi que les plus grande table acompagné de chez etoilé. Un service de bateau navette est mis en place toute les heures pour relier le continent au parc</p>
-		</div>
-		<div class="col-md-5 ">
-			<img class="img-fluid rounded-2" src="assets/img/Jurassic-world-park.jpg" alt="experience jurassic world">
-		</div>
+	{% endfor %}
+</div>
+<!-- START THE FEATURETTES -->
+<hr class="featurette-divider">
+<div class="row featurette text-primary bg-secondary rounded-2 p-2 d-flex justify-content-center align-items-center">
+	<div class="col-md-7">
+		<h2 class="featurette-heading mt-1">Une experience unique au monde</h2>
+		<p class="lead">Venez découvrir l'experience la plus extraordinaire, dans un parc de 2000 hectar situé dans les bahamas. Vous profiterez sur place de restauration rapide, ainsi que les plus grande table acompagné de chez etoilé. Un service de bateau navette est mis en place toute les heures pour relier le continent au parc</p>
 	</div>
-
-	<hr class="featurette-divider">
-
-	<div class="row featurette text-primary bg-secondary rounded-2 p-2 d-flex justify-content-center align-items-center">
-		<div class="col-md-7 order-md-2">
-			<h2 class="featurette-heading mt-1">Jurassic restaurant</h2>
-			<p class="lead">Jurassic restaurant est un lieu improbable où l’on vient manger, boire, rire et se régaler de plats signés jurassic, un clin d’œil à leur passé gastronomique au Jardin des Sens. Un lieu dédié au plaisir dans l’assiette, mais aussi à une atmosphère décontractée,
-												où tout les carnivors se retrouve dans une mixité hétéroclite et amusante.</p>
-		</div>
-		<div class="col-md-5 order-md-1">
-			<img class="img-fluid rounded-2" src="assets/img/Jurassic-world-restaurant.jpg" alt="restaurant jurassic world">
-		</div>
+	<div class="col-md-5 ">
+		<img class="img-fluid rounded-2" src="assets/img/Jurassic-world-park.jpg" alt="experience jurassic world">
 	</div>
-
-	<hr class="featurette-divider">
-
-	<div class="row featurette text-primary bg-secondary rounded-2 p-2 d-flex justify-content-center align-items-center">
-		<div class="col-md-7">
-			<h2 class="featurette-heading mt-1">Votre sécurite, notre priorité</h2>
-			<p class="lead">En visitant notre parc, nous vous garantissons une sécurité repondant au exigeance gouvernemental lié au dinosaure que vous rencontrez dans le parc. Votre famille se trouve en sécurite dans notre parc acompagne de nos équipes</p>
-		</div>
-		<div class="col-md-5 ">
-			<img class="img-fluid rounded-2" src="assets/img/Jurassic-world-enfant.jpg" alt="securité dans le parc">
-		</div>
+</div>
+<hr class="featurette-divider">
+<div class="row featurette text-primary bg-secondary rounded-2 p-2 d-flex justify-content-center align-items-center">
+	<div class="col-md-7 order-md-2">
+		<h2 class="featurette-heading mt-1">Jurassic restaurant</h2>
+		<p class="lead">Jurassic restaurant est un lieu improbable où l’on vient manger, boire, rire et se régaler de plats signés jurassic, un clin d’œil à leur passé gastronomique au Jardin des Sens. Un lieu dédié au plaisir dans l’assiette, mais aussi à une atmosphère décontractée,
+											où tout les carnivors se retrouve dans une mixité hétéroclite et amusante.</p>
 	</div>
-
-	<hr
-	class="featurette-divider">
-
+	<div class="col-md-5 order-md-1">
+		<img class="img-fluid rounded-2" src="assets/img/Jurassic-world-restaurant.jpg" alt="restaurant jurassic world">
+	</div>
+</div>
+<hr class="featurette-divider">
+<div class="row featurette text-primary bg-secondary rounded-2 p-2 d-flex justify-content-center align-items-center">
+	<div class="col-md-7">
+		<h2 class="featurette-heading mt-1">Votre sécurite, notre priorité</h2>
+		<p class="lead">En visitant notre parc, nous vous garantissons une sécurité repondant au exigeance gouvernemental lié au dinosaure que vous rencontrez dans le parc. Votre famille se trouve en sécurite dans notre parc acompagne de nos équipes</p>
+	</div>
+	<div class="col-md-5 ">
+		<img class="img-fluid rounded-2" src="assets/img/Jurassic-world-enfant.jpg" alt="securité dans le parc">
+	</div>
+</div>
+<hr class="featurette-divider">
 <!-- /END THE FEATURETTES -->
 {% endblock %}

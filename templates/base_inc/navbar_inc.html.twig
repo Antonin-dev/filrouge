@@ -1,42 +1,42 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light py-1">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="{{path('home')}}"><img class="img-navbar"
-						src="{{ asset('assets/img/jurassic_world_navbar.png') }}" alt="logo jurassic world"></a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-					aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarText">
-					<ul class="navbar-nav me-auto   mb-lg-0">
-						<li class="nav-item d-flex align-items-center">
-							<a class="nav-link" href="{{path('attraction')}}">Attractions</a>
-						</li>
-						<li class="nav-item d-flex align-items-center">
-							<a class="nav-link" href="{{path('spectacle')}}">Spectacle</a>
-						</li>
-						<li class="nav-item d-flex align-items-center">
-							<a class="nav-link" href="{{path('simulation')}}">Je reserve</a>
-						</li>
-						<li class="nav-item d-flex align-items-center">
-							<a class="nav-link" href="{{path('acces_parc')}}">Acces au parc</a>
-						</li>
-						<li class="nav-item d-flex align-items-center">
-							<a class="nav-link" href="{{path ('rating')}}">Avis</a>
-						</li>
-					</ul>
-					<span class="navbar-text swup-control">
-						{% if app.user %}
-						<a href="{{path('account')}} " id="lien">Mon compte
-							<small>({{app.user.firstname}})</small>
-						</a>
-						|
-						<a href="{{path('app_logout')}} " id="lien">Déconnexion</a>
-						{% else %}
-						<a href="{{path('app_login')}} " id="lien">Connexion</a>
-						|
-						<a href="{{path('register')}} " id="lien">Inscription</a>
-						{% endif %}
-					</span>
-				</div>
-			</div>
-		</nav>
+	<div class="container-fluid">
+		<a class="navbar-brand" href="{{path('home')}}"><img class="img-navbar"
+				src="{{ asset('assets/img/jurassic_world_navbar.png') }}" alt="logo jurassic world"></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+			aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarText">
+			<ul class="navbar-nav me-auto   mb-lg-0">
+				<li class="nav-item d-flex align-items-center">
+					<a class="nav-link" href="{{path('attraction')}}">Attractions</a>
+				</li>
+				<li class="nav-item d-flex align-items-center">
+					<a class="nav-link" href="{{path('spectacle')}}">Spectacle</a>
+				</li>
+				<li class="nav-item d-flex align-items-center">
+					<a class="nav-link" href="{{path('simulation')}}">Je reserve</a>
+				</li>
+				<li class="nav-item d-flex align-items-center">
+					<a class="nav-link" href="{{path('acces_parc')}}">Acces au parc</a>
+				</li>
+				<li class="nav-item d-flex align-items-center">
+					<a class="nav-link" href="{{path ('rating')}}">Avis</a>
+				</li>
+			</ul>
+			<span class="navbar-text swup-control">
+				{% if app.user %}
+				<a href="{{path('account')}} " id="lien">Mon compte
+					<small>({{app.user.firstname}})</small>
+				</a>
+				|
+				<a href="{{path('app_logout')}} " id="lien">Déconnexion</a>
+				{% else %}
+				<a href="{{path('app_login')}} " id="lien">Connexion</a>
+				|
+				<a href="{{path('register')}} " id="lien">Inscription</a>
+				{% endif %}
+			</span>
+		</div>
+	</div>
+</nav>

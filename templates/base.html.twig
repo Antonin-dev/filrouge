@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,94 +10,51 @@
 		{% block title %}Jurassic World
 		{% endblock %}
 	</title>
-
-	<!-- Bootstrap core CSS -->
 	{{ encore_entry_link_tags('app') }}
-	{% block javascript %}{% endblock %}
-
-
 </head>
 
 <body {% if block('effet') is defined %} {{ stimulus_controller('symfony/ux-swup/swup') }} {% endif %}
 	data-containers="#swup #lien" data-theme="slide">
 	<header>
-		{# Navbar include start #}
+		{# -------------------------------NAVBAR-START------------------------------ #}
+
 		{% include "base_inc/navbar_inc.html.twig" %}
-		{# Navbar include end #}
+		{# -------------------------------NAVBAR-END------------------------------ #}
 	</header>
 	<div class="container bg-background mt-0 rounded-3 p-2">
 		<div {% if block('effet') is defined %} id="swup" {% endif %}>
 			<main role="main" class="main-content pt-1">
-				{# -------------------------------CAROUSEL------------------------------- #}
+				{# -------------------------------CAROUSEL-START------------------------------ #}
 				{% if block('carousel') is defined %}
-				<div class="container">
-					<div id="carouselExampleCaptions" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
-						<div class="carousel-indicators">
-							{% for key, heeader in headers %}
-							<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{key}}"
-								{% if key == 0 %} class="active" {% endif %} aria-current="true"
-								aria-label="Slide 1"></button>
-							{% endfor %}
-						</div>
-						<div class="carousel-inner">
-
-							{% for key,header in headers %}
-							<div class="carousel-item {% if key == 0 %}active{% endif %}"
-								style="background: url('/uploads/{{header.illustration}}'); background-position: center; background-size: cover;">
-
-								<div class="carousel-caption d-none d-md-block">
-									<h5>{{header.title}}</h5>
-									<p>{{header.content}}</p>
-									<p>
-										<a class="btn btn-lg btn-info" href="{{header.btnurl}}"
-											role="button">{{header.btntitle}}</a>
-									</p>
-								</div>
-							</div>
-							{% endfor %}
-						</div>
-						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-							data-bs-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Previous</span>
-						</button>
-						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-							data-bs-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Next</span>
-						</button>
-					</div>
-				</div>
-
+				{% include "base_inc/carousel_inc.html.twig" %}
 				{% endif %}
+				{# -------------------------------CAROUSEL-START------------------------------ #}
 
-				{# -------------------------------Content------------------------------- #}
-
-				<div class="container marketing mb-5"> {% block content %}{% endblock %}
-
+				{# -------------------------------CONTENT-START------------------------------ #}
+				<div class="container marketing mb-5">
+					{% block content %}
+					{% endblock %}
 				</div>
-				{# -------------------------------FOOTER------------------------------- #}
+				{# -------------------------------CONTENT-END------------------------------ #}
 
+				{# -------------------------------FOOTER------------------------------- #}
 			</main>
 		</div>
-
-		
 	</div>
-	<footer class="container-fluid text-white text-center bg-dark mt-2 {% if block('footerfixed') is defined %}fixed-bottom {% endif %}">
-	<div class="row d-flex flex-column">
-		<div class="col-2 m-auto d-flex justify-content-around align-items-center">
-			<img src="{{asset('assets/img/instagram.svg')}}" alt="" srcset="" height="30px">
-			<img src="/assets/img/logo_jw.svg" alt="logo jurassic world" width="30px">
-			<img src="{{asset('assets/img/twitter.svg')}}" alt="" srcset="" height="30px">
-		</div>
-		<div class="col-6 m-auto">
-
-			<p class="mb-0">&copy; www.antonin-dev.fr</p>
-			
-		</div>
-	</div 
-</footer>
-	{{ encore_entry_script_tags('app') }}
-	{% block script %}{% endblock %}
-</body>
+	<footer	class="container-fluid text-white text-center bg-dark mt-2 {% if block('footerfixed') is defined %}fixed-bottom {% endif %}">
+		<div class="row d-flex flex-column">
+			<div class="col-2 m-auto d-flex justify-content-around align-items-center">
+				<img src="{{asset('assets/img/instagram.svg')}}" alt="" srcset="" height="30px">
+				<img src="/assets/img/logo_jw.svg" alt="logo jurassic world" width="30px">
+				<img src="{{asset('assets/img/twitter.svg')}}" alt="" srcset="" height="30px">
+			</div>
+			<div class="col-6 m-auto">
+				<p class="mb-0">&copy; www.antonin-dev.fr</p>
+			</div>
+		</div> 
+	</footer>
+	{{ encore_entry_script_tags('app') }} 
+	{% block javascript %}{% endblock %}
+	{% block script %}{% endblock %} 
+</body> 
 </html>

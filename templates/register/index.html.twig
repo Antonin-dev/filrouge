@@ -2,21 +2,20 @@
 {% block effet %}{% endblock %}
 {% block content %}
 {% block footerfixed %}{% endblock %}
-
-	<div class="bg-secondary p-2 mt-3 rounded-3 text-white">
-
-		<div class="col-md-12 d-flex justify-content-between">
-			<h2 class="text-center">Inscription</h2>
-			<a href="{{path('home')}}"><img src="{{asset('assets/img/close.svg')}}" alt="page précédente" width="20px"></a>
-
-		</div>
-		{% if notification %}
-			<div class="alert alert-info">{{notification}} <a class="text-dark" href="{{path('app_login')}}">ici.</a></div>
-		{% endif %}
-		<div class="container-form-inscription">
-			{{ form(form) }}
-			</div>
-		</div>
-
-
-	{% endblock %}
+<div class="bg-secondary p-2 mt-3 rounded-3 text-white">
+	<div class="col-md-12 d-flex justify-content-between">
+		<h2 class="text-center">Inscription</h2>
+		<a href="{{path('home')}}">
+			<img src="{{asset('assets/img/close.svg')}}" alt="page précédente" width="20px">
+		</a>
+	</div>
+	{% if notification %}
+	<div class="alert alert-info">
+		{{notification}} <a class="text-dark" href="{{path('app_login')}}">ici.</a>
+	</div>
+	{% endif %}
+	<div class="container-form-inscription">
+		{{ form(form) }}
+	</div>
+</div>
+{% endblock %}
