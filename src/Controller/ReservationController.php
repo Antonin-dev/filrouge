@@ -56,14 +56,11 @@ class ReservationController extends AbstractController
                 }
                 else{
                     $notification = "Capacité maximum du parc atteint veuillez choisir une autre date";
-                }
-                
+                }     
             }
             else{
                 $notification = "Vous ne pouvez choisir une date antérieur à la date du jour.";
             }
-
-            
         }
 
         return $this->render('reservation/index.html.twig', [
@@ -72,27 +69,17 @@ class ReservationController extends AbstractController
         ]);
     }
 
-
-
-
     /**
      * @Route("/reservation/choix-adresse", name="reservation_address")
      */
     public function addressChoice(): Response
     {
-
         if (!$this->getUser()->getAddresses()->getValues()) {
-
             return $this->redirectToRoute('account_address_add');
-        
         }
 
         return $this->render('reservation/address_choice.html.twig');
     }
-
-
-
-
 
     /**
      * @Route("/reservation/recap/{addressid}", name="reservation_recap")
@@ -104,10 +91,7 @@ class ReservationController extends AbstractController
         $addressReservation = $this->entityManager->getRepository(Address::class)->findOneBy([
             'id' => $addressid
         ]);
-
-        
-        $numberTicket = $date->format('dmY').'-'.uniqid();
-        
+        $numberTicket = $date->format('dmY').'-'.uniqid();  
         $reservation = new Reservation;
         $reservation->setDatechoice($this->session->get('datechoice'));
         $reservation->setQuantity($this->session->get('quantity'));
@@ -117,16 +101,9 @@ class ReservationController extends AbstractController
         $reservation->setCreatedat($date);
         $reservation->setAddressReservation($addressReservation);
         $reservation->setTotal($entryPrice * $this->session->get('quantity'));
-        
-        
-        $this->entityManager->persist($reservation);
-       
+ 
+        $this->entityManager->persist($reservation);      
         $this->entityManager->flush();
-//  // test start
-//  dd($this->entityManager->getRepository(Reservation::class)->findBy([
-//     'quantity' => 27
-// ]));
-// test end
 
         return $this->render('reservation/recap.html.twig',[
             'reservation' => $reservation,
@@ -145,10 +122,7 @@ class ReservationController extends AbstractController
         $data = [
             'price' => $parcPrice / 100
         ];
-        // dd($parcPrice);
 
         return new JsonResponse($data);
-
     }
-
 }

@@ -34,35 +34,26 @@ class RegisterController extends AbstractController
         $form = $this->createForm(RegisterType::class, $user);
         $form->handleRequest($request);
 
-
         // Création du flag
         $notification = null;
-
 
         // Verification et écoute du formulaire
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
-
-            
-
             // Verification si l'email existe déja en bdd
             $searchEmail = $this->entityManager->getRepository(User::class)->findOneBy([
                 'email' => $user->getEmail()
             ]);
 
             if (!$searchEmail) {
-                
                 // hash du mot de passe
                 $password = $encoder->encodePassword($user, $user->getPassword());
                 $user->setPassword($password);
-
                 // Je fige et flush les données
                 $this->entityManager->persist($user);
                 $this->entityManager->flush();
-
                 // Notification à envoyer
-                $notification = 'Votre inscription c\'est correctement déroulée. vous pouvez dès à présent vous connecter à votre compte en cliquant ';
-                
+                $notification = 'Votre inscription c\'est correctement déroulée. vous pouvez dès à présent vous connecter à votre compte en cliquant ';             
                 // Envoie email
                 $mailjet = new Mailjet;
                 $mailjet->sendWelcomeEmail($user->getEmail(), $user->getFirstname());
@@ -70,8 +61,6 @@ class RegisterController extends AbstractController
             } else {
                 $notification = "L'email que vous avez renseigné existe déja";
             }
-            
-
         }
 
         return $this->render('register/index.html.twig', [

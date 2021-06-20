@@ -18,7 +18,6 @@ class AttractionCrudController extends AbstractCrudController
         return Attraction::class;
     }
 
-    
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -38,10 +37,7 @@ class AttractionCrudController extends AbstractCrudController
             AssociationField::new('category', 'Catégorie'),
             TextField::new('subtitle', 'Sous-titre'),
             TextareaField::new('description', 'Description'),
-            BooleanField::new('isBest', 'Mise en avant')
-
-            
+            BooleanField::new('isBest', 'Mise en avant')    
         ];
-    }
-    
+    } 
 }

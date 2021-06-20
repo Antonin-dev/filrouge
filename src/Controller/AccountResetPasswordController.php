@@ -28,12 +28,11 @@ class AccountResetPasswordController extends AbstractController
      * @Route("/reinitialisation-mot-de-passe", name="account_reset_password")
      */
     public function index(Request $request): Response
-    {
-        
+    {      
+        // Vérification 
         if ($this->getUser()) {
             return $this->redirectToRoute('home');      
         }
-
         if ($request->get('email')) {
             $userResetPassword = $this->entityManager->getRepository(User::class)->findOneBy([
                 'email' => $request->get('email')
@@ -58,9 +57,8 @@ class AccountResetPasswordController extends AbstractController
             }else{
                 $this->addFlash('notice', 'L\'adresse émail que vous avez renseigné est non reconnue');
             }
-
         }
-
+        
         return $this->render('account_reset_password/index.html.twig');
     }
 
@@ -72,13 +70,12 @@ class AccountResetPasswordController extends AbstractController
         $resetPassword = $this->entityManager->getRepository(ResetPassword::class)->findOneBy([
             'token' => $token
         ]);
-
         if ($resetPassword) {
             $this->redirectToRoute('account_reset_password');
         }
 
         $now = new DateTime();
-     
+
         if ($now > $resetPassword->getCreatedAt()->modify('+ 3 hour')) {
             $this->addFlash('notice', 'Votre demande de mot de passe a expiré. Merci de la renouveller.');
             return $this->redirectToRoute('reset_password');
@@ -89,16 +86,12 @@ class AccountResetPasswordController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $newPassword = $form->get('new_password')->getData();
-        
             $password = $passwordEncoder->encodePassword($resetPassword->getUser(), $newPassword);
             $resetPassword->getUser()->setPassword($password);
             $this->entityManager->flush();
             $this->addFlash('notice', 'Votre mot de passe a bien été mis à jour');
             return $this->redirectToRoute('app_login');
         }
-
-
-
 
         return $this->render('account_reset_password/update.html.twig', [
             'form' => $form->createView()

@@ -25,7 +25,7 @@ class RatingController extends AbstractController
     {
         $ratings = $this->entityManager->getRepository(Ratings::class)->findAll();
         $sum = 0;
-
+        
         if (empty($ratings)) {
             return $this->redirectToRoute('home');  
         }else{

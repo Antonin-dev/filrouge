@@ -17,7 +17,6 @@ class AccountAddressController extends AbstractController
     private $entityManager;
     private $session;
 
-
     public function __construct(EntityManagerInterface $entityManager, SessionInterface $session)
     {
         $this->entityManager = $entityManager;
@@ -38,10 +37,9 @@ class AccountAddressController extends AbstractController
      */
     public function add(Request $request): Response
     {
-        // J'instancie l'entity address
+        
         $newAddress = new Address;
 
-        // Formulaire
         $form = $this->createForm(AddressType::class, $newAddress);
         $form->handleRequest($request);
 
@@ -52,20 +50,14 @@ class AccountAddressController extends AbstractController
             $this->entityManager->flush();
 
             if ($this->session->get('datechoice') && $this->session->get('quantity')) {
-                
                 return $this->redirectToRoute('reservation_address');
             }
-
             return $this->redirectToRoute('account_address');
         }
-
-
         return $this->render('account/address_add.html.twig', [
             'form' => $form->createView()
         ]);
     }
-
-
 
     /**
      * @Route("/compte/modifier-une-adresse/{id}", name="account_address_edit")
@@ -78,8 +70,7 @@ class AccountAddressController extends AbstractController
             'id' => $id
         ]);
 
-
-        // Controle
+        // Vérification
         if (!$address || $address->getUser() != $this->getUser()) {
             return $this->redirectToRoute('account_address');
         }
@@ -88,18 +79,14 @@ class AccountAddressController extends AbstractController
         $form = $this->createForm(AddressType::class, $address);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            
+        if ($form->isSubmitted() && $form->isValid()) { 
             $this->entityManager->flush();
             return $this->redirectToRoute('account_address');
         }
-
         return $this->render('account/address_add.html.twig', [
             'form' => $form->createView()
         ]);
     }
-
-
 
     /**
      * @Route("/compte/supprimer-une-adresse/{id}", name="account_address_delete")
@@ -107,17 +94,16 @@ class AccountAddressController extends AbstractController
     public function remove(Request $request, $id): Response
     {
 
-        // Recherche adresse
+        // Recherche de l'adresse
         $address = $this->entityManager->getRepository(Address::class)->findOneBy([
             'id' => $id
         ]);
-        
+    
         // Vérification
         if ($address && $address->getUser() == $this->getUser()) {
             $this->entityManager->remove($address);
             $this->entityManager->flush();
         }
-
         return $this->redirectToRoute('account_address');
         
     }

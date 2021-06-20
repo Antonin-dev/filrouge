@@ -36,17 +36,11 @@ class RattingAddController extends AbstractController
             $rating->setDatecomment(new DateTime('now'));
             $rating->setReservationname(ucfirst(strtolower($this->getUser()->getFirstname())));
             $rating->setReservation($reservation);
-            // dd($rating);
             $entityManager->persist($rating);
             $entityManager->flush();
-            $notification = 'Commentaire ajouté avec succes, merci pour votre retour.';
-
-            
-        
+            $notification = 'Commentaire ajouté avec succes, merci pour votre retour.'; 
         }
-
         
-
         return $this->render('rating/rating_add.html.twig', [
             'form' => $form->createView(),
             'notification' => $notification

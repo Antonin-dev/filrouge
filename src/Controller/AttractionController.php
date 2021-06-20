@@ -24,9 +24,7 @@ class AttractionController extends AbstractController
      */
     public function index(): Response
     {
-
         $attractions = $this->entityManager->getRepository(Attraction::class)->findAll();
-        
 
         return $this->render('attraction/index.html.twig', [
             'attractions' => $attractions,
@@ -38,16 +36,13 @@ class AttractionController extends AbstractController
      */
     public function show($slug): Response
     {
-
         $attraction = $this->entityManager->getRepository(Attraction::class)->findOneBy([
             'slug' => $slug
         ]);
-
         $attractions = $this->entityManager->getRepository(Attraction::class)->findBy([
             'isBest' => 1
         ]);
         
-
         return $this->render('attraction/show.html.twig', [
             'attractions' => $attractions,
             'attraction' => $attraction

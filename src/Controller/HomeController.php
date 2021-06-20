@@ -24,7 +24,6 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-
         $headers = $this->entityManager->getRepository(Header::class)->findAll();
         $bestAttractions = $this->entityManager->getRepository(Attraction::class)->findBy([
             'isBest' => 1

@@ -14,8 +14,7 @@ class HeaderCrudController extends AbstractCrudController
     {
         return Header::class;
     }
-
-    
+  
     public function configureFields(string $pageName): iterable
     {
         return [

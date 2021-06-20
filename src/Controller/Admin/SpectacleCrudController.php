@@ -15,8 +15,7 @@ class SpectacleCrudController extends AbstractCrudController
     {
         return Spectacle::class;
     }
-
-    
+ 
     public function configureFields(string $pageName): iterable
     {
         return [

@@ -33,15 +33,12 @@ class AccountUpdatePasswordController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Ancien mot de passe
             $oldPassword = $form->get('old_password')->getData();
 
             // Vérification
             if ($passwordEncoder->isPasswordValid($user, $oldPassword)) {
                 $newPassword = $form->get('new_password')->getData();
-                // Encodage
                 $password = $passwordEncoder->encodePassword($user, $newPassword);
-                // set // flush // notification
                 $user->setPassword($password);
                 $this->entityManager->flush();
                 $notification = "Votre mot de passe à bien été mis à jour";
@@ -52,7 +49,7 @@ class AccountUpdatePasswordController extends AbstractController
                 $alert = 1;
             }
         }
-
+        
         return $this->render('account/update_password.html.twig', [
             'form' => $form->createView(),
             'notification' => $notification,

@@ -27,16 +27,9 @@ class AccountReservationController extends AbstractController
         $reservations = $this->entityManager->getRepository(Reservation::class)->findBy([
             'user' => $this->getUser()
         ]);
-
-
-        // Test start
-        
         $reservationTrie = $this->entityManager->getRepository(Reservation::class)->findReservationByIspaidAndUser($this->getUser());
-        // dd($reservationTrie);
-        // Test end
         $eligibilityControle = new EligibilityComment($reservations);
         $eligibilityArray = $eligibilityControle->controlEligibility();
-
 
         return $this->render('account/reservation.html.twig', [
             'reservations' => $reservationTrie,

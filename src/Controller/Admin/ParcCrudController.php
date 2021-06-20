@@ -14,15 +14,14 @@ class ParcCrudController extends AbstractCrudController
     {
         return Parc::class;
     }
-
-    
+ 
     public function configureFields(string $pageName): iterable
     {
         return [
             TextField::new('name', 'Nom du parc'),
             IntegerField::new('capacity', 'capacité'),
             MoneyField::new('price', 'Prix entrée')->setCurrency('EUR')
-            // A veriffier si il y a pas de bug avec la division par 100
+            
         ];
     }
     
