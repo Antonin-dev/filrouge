@@ -3,12 +3,9 @@
 namespace App\Controller;
 
 use DateTime;
-use Stripe\Stripe;
 use App\Entity\Parc;
 use App\Entity\Address;
-use App\Service\Mailjet;
 use App\Entity\Reservation;
-use Stripe\Checkout\Session;
 use App\Form\ReservationType;
 use App\Service\ParcCapacity;
 use Doctrine\ORM\EntityManagerInterface;
@@ -17,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
+
 
 class ReservationController extends AbstractController
 {
@@ -109,20 +106,5 @@ class ReservationController extends AbstractController
             'reservation' => $reservation,
             'price' => $entryPrice
         ]);
-    }
-
-    /**
-     * @Route("/api/price", name="api_price")
-     */
-    public function api(): Response
-    {
-        $parcPrice = $this->entityManager->getRepository(Parc::class)->findOneBy([
-            'name' => 'jurassicworld'
-        ])->getPrice();
-        $data = [
-            'price' => $parcPrice / 100
-        ];
-
-        return new JsonResponse($data);
     }
 }
