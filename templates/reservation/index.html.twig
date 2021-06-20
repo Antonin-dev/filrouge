@@ -2,54 +2,51 @@
 
 {% block title %}Je réserve - Jurassic World
 {% endblock %}
-{# {% block effet %}{% endblock %} #}
 {% block content %}
+{% block footerfixed %}{% endblock %}
+
 <div class="container d-flex justify-content-around align-items-center">
-
-
-	<div class="container-address col-md-6 mt-4 p-2 bg-secondary rounded-3 text-primary">
-		<div class="col-12 col-md-12 d-flex justify-content-between">
-			<h2>Je réserve</h2>
-			<a href="{{path('home')}}"><img src="{{asset('assets/img/close.svg')}}" alt="page précédente"
-					width="20px"></a>
-
+	<div class="row d-flex justify-content-center align-items-center">
+		<div class="col-12 col-md-6 mt-4 p-2 bg-secondary rounded-3 text-primary h-100">
+			<div class="col-12 col-md-12 d-flex justify-content-between">
+				<h2>Je réserve</h2>
+				<a href="{{path('home')}}">
+					<img src="{{asset('assets/img/close.svg')}}" alt="page précédente"width="20px">
+				</a>
+			</div>
+			{% if notification %}
+			<div class="text-center alert alert-danger">{{notification}}</div>
+			{% endif %}
+			<p>Pour valider votre réservation vous devez disposez d'un compte enregistré ainsi qu'une adresse de facturation.</p>
+			{{ form(form) }}
 		</div>
-
-		{% if notification %}
-
-		<div class="text-center alert alert-danger">{{notification}}</div>
-
-		{% endif %}
-		<p>Pour valider votre réservation vous devez disposez d'un compte enregistré ainsi qu'une adresse de
-			facturation.</p>
-		<hr>
-		{{ form(form) }}
-
-
+		<div class="col-12 col-md-6 d-flex justify-content-sm-center flex-md-row-reverse">
+			<div class="card bg-dark text-white mt-4 p-2" style="width: 18rem;">
+				<img class="card-img-top" src="{{asset('assets/img/logo_jw.svg')}}" alt="logo jurassic world">
+				<div class="card-body">
+					<h5 class="card-title"></h5>
+					<p class="card-text">
+						<hr>
+						Nombre de personne :
+						<span class="quantity-ajax"></span>
+						<br>
+						Prix entrée au parc :
+						<span class="price-ajax"></span>
+						€.<br>
+						Total :
+						<span class="total-ajax"></span>
+						€.
+						<br>
+						<hr>
+						Votre réservation sera validé apres inscription et paiement.
+					</p>
+				</div>
+			</div>	
+		</div>	
 	</div>
-
-	<div class="card col-12 col-md-6 bg-dark text-white mt-4 p-2" style="width: 18rem;">
-		<img class="card-img-top" src="{{asset('assets/img/logo_jw.svg')}}" alt="logo jurassic world">
-		<div class="card-body">
-			<h5 class="card-title"></h5>
-			<p class="card-text">
-				<hr>
-				Nombre de personne :
-				<span class="quantity-ajax"></span>
-				<br>
-				Prix entrée au parc :
-				<span class="price-ajax"></span>
-				€.<br>
-				Total :
-				<span class="total-ajax"></span>
-				€.
-				<br>
-				<hr>
-				Votre réservation sera validé apres inscription et paiement.
-			</p>
-		</div>
-	</div>
-	<script src="{{asset('assets/js/main.js')}}"></script>
 </div>
 
+{% endblock %}
+{% block script %}
+<script src="{{asset('assets/js/main.js')}}"></script>
 {% endblock %}

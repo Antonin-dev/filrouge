@@ -1,48 +1,36 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}
-	{{attraction.name}}
-	- Jurassic World
-{% endblock %}
+{% block title %}{{attraction.name}} - Jurassic World{% endblock %}
 {% block effet %}{% endblock %}
 {% block content %}
-
-	<div class="row pt-2 mb-4">
-
-		<div class="col-12 bg-secondary p-2 mt-2 text-primary rounded-2 ">
-			<div class="image-full" style="background-image: url(/uploads/{{attraction.imagefull}}); background-size: cover;"></div>
-			<h5>{{attraction.name}}</h5>
+<div class="row pt-2 mb-4">
+	<div class="col-12 bg-secondary p-2 mt-2 text-primary rounded-2 ">
+		<h2 class="text-center">{{attraction.name}}</h2>
+		<div class="image-full rounded-3" style="background-image: url(/uploads/{{attraction.imagefull}}); background-size: cover;"></div>
 			<span class="mb-2 badge
-				    {% if attraction.category == 'Vitesse' %}
-				        bg-vitesse
-				    {% elseif attraction.category == 'Horreur' %}
-				        bg-horreur
-				    {% elseif attraction.category == 'Jeune âge' %}
-				        bg-jeuneAge
-				    {% else %}
-				        bg-primary
-				    {% endif %}
-				    ">{{attraction.category}}</span>
+					{% if attraction.category == 'Vitesse' %}
+						bg-vitesse
+					{% elseif attraction.category == 'Horreur' %}
+						bg-horreur
+					{% elseif attraction.category == 'Jeune âge' %}
+						bg-jeuneAge
+					{% else %}
+						bg-primary
+					{% endif %}
+					">{{attraction.category}}</span>
 			<p class="card-text">{{attraction.description}}</p>
 		</div>
-
 	</div>
-
 	<hr>
-
 	<div class="bg-secondary text-primary text-center rounded-3">
 		<h2>Nos attractions du moment</h2>
 		<p>Découvrez les attractions les plus fun</p>
 	</div>
-
 	<div class="row">
 		{% for attraction in attractions %}
-			<div class="col-md-4">
-				{% include "attraction/single_attraction.html.twig" %}
-			</div>
+		<div class="col-md-4">
+			{% include "attraction/single_attraction.html.twig" %}
+		</div>
 		{% endfor %}
 	</div>
-	<!-- /.row -->
-
-
+</div>
 {% endblock %}

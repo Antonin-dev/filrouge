@@ -20,7 +20,7 @@ class RatingsType extends AbstractType
                 'label' => 'Indiquez votre évaluation entre 1 et 5',
                 'attr' => [
                     'min' => 1,
-                    'max' => 5
+                    'max' => 5,
                 ]
             ])
             ->add('comment', TextareaType::class, [
@@ -28,10 +28,7 @@ class RatingsType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Votre commentaire'
                 ],
-                'constraints' => new Length([
-                    'min' => 5,
-                    'max' => 300
-                ])
+                
             ])
             ->add('submit', SubmitType::class, [
                 'label' => "Mettre à jour",

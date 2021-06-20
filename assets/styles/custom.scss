@@ -2,8 +2,10 @@
 
 @mixin bg-image {
     // background-position: center;
-    background-repeat: no-repeat;
+    // background-repeat: no-repeat;
+    // modification effectuer pour regler le probleme de bah de page blanche dans les attractions
     background-size: cover;
+    
 }
 
 @mixin address-arround {
@@ -88,10 +90,8 @@ body{
     background-image: url(../../public/assets/img/background_bodycopie.png);
     // background-color: rgb(58, 56, 56)!important;
     @include bg-image;
-    background-repeat: no-repeat;
-    background-size: cover;
     font-family: 'Roboto', sans-serif;
-
+    height: 100vh;
     h1, h2, .navbar{
         font-family: 'Stint Ultra Condensed', cursive;
     }
@@ -309,6 +309,14 @@ body{
 
 .container-resa{
     height: 600px;
+}
+
+
+// ----------------- Container reservation account -------------------------------
+
+.container-reservation{
+    width: 100%;
+    overflow: auto;
 }
 
 

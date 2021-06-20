@@ -1,43 +1,38 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Mes adresses - Jurassic World
-{% endblock %}
-{% block effet %}{% endblock %}
-
+{% block title %}Mes adresses - Jurassic World{% endblock %}
+{# {% block effet %}{% endblock %} #}
+{% block footerfixed %}{% endblock %}
 {% block content %}
-
-	<div class="container-address mt-4 bg-secondary p-2 rounded-3 text-primary">
-		<div class="col-md-12 d-flex justify-content-between">
+<div class="container-address mt-4 bg-secondary p-2 rounded-3 text-primary">
+	<div class="col-md-12 d-flex justify-content-between">
+		<div>
 			<h1 class="text-center">Choisissez votre adresse de facturation</h1>
-			<a href="{{path('reservation')}}"><img src="{{asset('assets/img/close.svg')}}" alt="page précédente" width="20px"></a>
-
+			<a href="{{path('account_address_add')}}" class="btn btn-success btn-sm mb-2">Ajouter une adresse</a>
 		</div>
-
-
-		<div class="row">
-			<div class="col-md-12 text-center card-address">
-				{% for address in app.user.addresses %}
-
-					<div class="card ms-1" style="width: 18rem;">
-						<div class="card-body text-dark">
-							<h5 class="card-title">{{ address.nameaddress }}</h5>
-							<p class="card-text">{{ address.address }},
-								<br>
-								{{ address.postal }}
-								-
-								{{ address.city }}
-								-
-								{{ address.country }}
-							</p>
-							<a href="{{path('reservation_recap', {'addressid' : address.id})}}" class="btn btn-success">Choisir</a>
-						</div>
-					</div>
-
-				{% endfor %}
+		<a href="{{path('simulation')}}">
+			<img src="{{asset('assets/img/close.svg')}}" alt="page précédente" width="20px">
+		</a>
+	</div>
+	<div class="row d-flex justify-content-around">	
+		{% for address in app.user.addresses %}
+		<div class="col-12 col-md-6 col-lg-4 text-center card-address">
+			<div class="card ms-1" style="width: 18rem;">
+				<div class="card-body text-dark">
+					<h5 class="card-title">{{ address.nameaddress }}</h5>
+					<p class="card-text">{{ address.address }},
+						<br>
+						{{ address.postal }}
+						-
+						{{ address.city }}
+						-
+						{{ address.country }}
+					</p>
+					<a href="{{path('reservation_recap', {'addressid' : address.id})}}"
+						class="btn btn-success">Choisir</a>
+				</div>
 			</div>
 		</div>
-
+		{% endfor %}
 	</div>
-
-
+</div>
 {% endblock %}

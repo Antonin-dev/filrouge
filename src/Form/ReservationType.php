@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Reservation;
+use DateTime;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -14,12 +15,16 @@ class ReservationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $now = new DateTime();
+        // dd($now->format('d-m-Y'));
         $builder
             
             ->add('quantity', IntegerType::class,[
                 'label' => 'Choisissez le nombre de place',
                 'attr' => [
-                    'placeholder' => 'Quantité'
+                    'placeholder' => 'Quantité',
+                    'min' => 1,
+                    'value' => 1
                 ]
             ])
             ->add('datechoice', DateType::class, [
@@ -29,7 +34,7 @@ class ReservationType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => 'Je réserve',
                 'attr' => [
-                    'class' => 'btn btn-success btn-block mt-2 col-12'
+                    'class' => 'btn btn-success btn-block mt-2 col-12',
                 ]
             ])
             

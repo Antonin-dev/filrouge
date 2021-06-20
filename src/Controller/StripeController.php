@@ -38,7 +38,9 @@ class StripeController extends AbstractController
         $reservation = $this->entityManager->getRepository(Reservation::class)->findOneBy([
             'numberticket' => $ticket
         ]);
+       
 
+        
 
         if (!$reservation) {
             return new JsonResponse(['error' => 'reservation']);
@@ -46,7 +48,7 @@ class StripeController extends AbstractController
 
         Stripe::setApiKey('sk_test_51Ifj6fDsg4lIRoSh8dYYR1fdXFpy6Pely5jB0Bf0zxVSOm3d36vacaafbongYeMPiBaKVZm7kq7INNS4NQ3Gk6nJ005vtwBPyU');
 
-        $YOUR_DOMAIN = 'http://127.0.0.1:8000';
+        $YOUR_DOMAIN = $_ENV['DOMAIN_URL'];
 
         $checkout_session = Session::create([
         'customer_email' => $reservation->getUser()->getEmail(),
@@ -63,15 +65,15 @@ class StripeController extends AbstractController
             'quantity' => $reservation->getQuantity(),
         ]],
         'mode' => 'payment',
-        'success_url' => $YOUR_DOMAIN . '/reservation/valide/{CHECKOUT_SESSION_ID}',
-        'cancel_url' => $YOUR_DOMAIN . '/reservation/erreur/{CHECKOUT_SESSION_ID}',
+        'success_url' => $YOUR_DOMAIN . 'reservation/valide/{CHECKOUT_SESSION_ID}',
+        'cancel_url' => $YOUR_DOMAIN . 'reservation/erreur/{CHECKOUT_SESSION_ID}',
         ]);
 
+        
         $reservation->setStripesession($checkout_session->id);
-        $this->entityManager->persist($reservation);
+        // $this->entityManager->persist($reservation);
         $this->entityManager->flush();
-
-
+        
         $response = new JsonResponse(['id' => $checkout_session->id]);
         
         return $response;

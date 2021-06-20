@@ -19,25 +19,26 @@ class RegisterType extends AbstractType
     {
         $builder
 
-            ->add('firstname', TextType::class, [//Equivalent a un input
-                // Je lui verrouille le type de form (texttype)
+            ->add('firstname', TextType::class, [
                 'label' => 'Votre prénom',
                 'constraints'=> new Length([
                     'min' => 2,
                     'max' => 30
                 ]),
-                // Constraint permet de verouiller le nombre de characters
                 'attr' => [
                     'placeholder' => 'Merci de saisir votre prénom'
                 ]
-                // Je lui rajouter un label pour modifier le text et un placeholder comme en html
             ])
 
             ->add('lastname', TextType::class, [
                 'label' => 'Votre nom',
                 'attr' => [
                     'placeholder' => 'Merci de saisir votre nom'
-                ]
+                ],
+                'constraints'=> new Length([
+                    'min' => 2,
+                    'max' => 30
+                ]),
             ])
 
             ->add('email', EmailType::class, [
@@ -61,14 +62,21 @@ class RegisterType extends AbstractType
                     'label' => 'Votre mot de passe',
                     'attr' => [
                         'placeholder' => 'Merci de saisir votre mot de passe'
-                    ]
+                    ],
+                    'constraints'=> new Length([
+                        'min' => 2,
+                        'max' => 30
+                    ]),
                 ],
                 'second_options' => [
                     'label' => 'Confirmez votre mot de passe',
                     'attr' => [
                         'placeholder' => 'Merci de confirmer votre mot de passe'
-                    ]
-
+                    ],
+                    'constraints'=> new Length([
+                        'min' => 2,
+                        'max' => 30
+                    ]),
                 ],
                 
             ])

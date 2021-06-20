@@ -8,6 +8,7 @@ use App\Entity\Category;
 use App\Entity\Spectacle;
 use App\Entity\Attraction;
 use App\Entity\Header;
+use App\Entity\Ratings;
 use App\Entity\Reservation;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -39,10 +40,11 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Parc', 'fas fa-store', Parc::class);
         yield MenuItem::linkToCrud('Header', 'fas fa-heading', Header::class);
-        yield MenuItem::linkToCrud('Réservations', 'fas fa-ticket-alt', Reservation::class);
+        yield MenuItem::linkToCrud('Categorie', 'fas fa-list', Category::class);
         yield MenuItem::linkToCrud('Attractions', 'fas fa-frog', Attraction::class);
         yield MenuItem::linkToCrud('Spectacles', 'fas fa-democrat', Spectacle::class);
-        yield MenuItem::linkToCrud('Categorie', 'fas fa-list', Category::class);
         yield MenuItem::linkToCrud('Utilisateur', 'fas fa-user', User::class);
+        yield MenuItem::linkToCrud('Réservations', 'fas fa-ticket-alt', Reservation::class);
+        yield MenuItem::linkToCrud('Commentaires', 'fas fa-star', Ratings::class);
     }
 }

@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block effet %}{% endblock %}
 {% block content %}
+{% block footerfixed %}{% endblock %}
 
 	<div class="bg-secondary p-2 mt-3 rounded-3 text-white">
 
@@ -10,7 +11,7 @@
 
 		</div>
 		{% if notification %}
-			<div class="alert alert-info">{{notification}}</div>
+			<div class="alert alert-info">{{notification}} <a class="text-dark" href="{{path('app_login')}}">ici.</a></div>
 		{% endif %}
 		<div class="container-form-inscription">
 			{{ form(form) }}

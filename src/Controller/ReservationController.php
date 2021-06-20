@@ -32,7 +32,7 @@ class ReservationController extends AbstractController
     }
 
     /**
-     * @Route("/reservation", name="reservation")
+     * @Route("/simulation", name="simulation")
      */
     public function index(Request $request, ParcCapacity $parcCapacity): Response
     {
@@ -105,18 +105,28 @@ class ReservationController extends AbstractController
             'id' => $addressid
         ]);
 
+        
+        $numberTicket = $date->format('dmY').'-'.uniqid();
+        
         $reservation = new Reservation;
         $reservation->setDatechoice($this->session->get('datechoice'));
         $reservation->setQuantity($this->session->get('quantity'));
-        $reservation->setNumberticket($date->format('dmY').'-'.uniqid());
+        $reservation->setNumberticket($numberTicket);
         $reservation->setUser($this->getUser());
         $reservation->setIspaid(false);
         $reservation->setCreatedat($date);
         $reservation->setAddressReservation($addressReservation);
         $reservation->setTotal($entryPrice * $this->session->get('quantity'));
-
+        
+        
         $this->entityManager->persist($reservation);
+       
         $this->entityManager->flush();
+//  // test start
+//  dd($this->entityManager->getRepository(Reservation::class)->findBy([
+//     'quantity' => 27
+// ]));
+// test end
 
         return $this->render('reservation/recap.html.twig',[
             'reservation' => $reservation,
@@ -124,7 +134,7 @@ class ReservationController extends AbstractController
         ]);
     }
 
-     /**
+    /**
      * @Route("/api/price", name="api_price")
      */
     public function api(): Response

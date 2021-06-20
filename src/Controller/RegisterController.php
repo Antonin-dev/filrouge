@@ -61,7 +61,7 @@ class RegisterController extends AbstractController
                 $this->entityManager->flush();
 
                 // Notification à envoyer
-                $notification = "Votre inscription c'est correctement déroulée. vous pouvez dès à présent vous connecter à votre compte .";
+                $notification = 'Votre inscription c\'est correctement déroulée. vous pouvez dès à présent vous connecter à votre compte en cliquant ';
                 
                 // Envoie email
                 $mailjet = new Mailjet;

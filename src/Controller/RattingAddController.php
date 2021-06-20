@@ -16,36 +16,40 @@ class RattingAddController extends AbstractController
 {
 
     /**
-     * @Route("/avis/ajouter/{id}", name="ratting_add")
+     * @Route("/avis/ajouter/{numberticket}", name="ratting_add")
      */
-    public function index(Request $request, EntityManagerInterface $entityManager, $id): Response
+    public function index(Request $request, EntityManagerInterface $entityManager, $numberticket): Response
     {
         $rating = new Ratings;
-        
+        $reservation = $entityManager->getRepository(Reservation::class)->findOneBy([
+            'numberticket' => $numberticket
+            ]);
+        $notification = null;
         $form = $this->createForm(RatingsType::class, $rating);
         $form->handleRequest($request);
-        
-        if ($form->isSubmitted() && $form->isValid()) {
 
-            $reservation = $entityManager->getRepository(Reservation::class)->findOneBy([
-            'id' => $id
-            ]);
-            
+        // Sécurité
+        if ($reservation == null) {
+            return $this->redirectToRoute('account');
+        }
+        if ($form->isSubmitted() && $form->isValid()) {
             $rating->setDatecomment(new DateTime('now'));
             $rating->setReservationname(ucfirst(strtolower($this->getUser()->getFirstname())));
             $rating->setReservation($reservation);
             // dd($rating);
             $entityManager->persist($rating);
             $entityManager->flush();
+            $notification = 'Commentaire ajouté avec succes, merci pour votre retour.';
 
             
-            return $this->redirectToRoute('account_reservation');
+        
         }
 
         
 
         return $this->render('rating/rating_add.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'notification' => $notification
         ]);
     }
 }

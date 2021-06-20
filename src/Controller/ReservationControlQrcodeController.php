@@ -30,17 +30,15 @@ class ReservationControlQrcodeController extends AbstractController
         $reservation = $this->entityManager->getRepository(Reservation::class)->findOneBy([
             'numberticket' => $reservationNumber
         ]);
-        $dateChoice = $reservation->getDatechoice()->format('Y-m-d');
-        $dateNow = date('Y-m-d');
-        $isPaid = $reservation->getIspaid();
-   
- 
-
         if ($reservation == null) {
             return $this->render('reservation_control_qrcode/error.html.twig', [
                 'error' => 'nofind'
             ]);
         }
+        $dateChoice = $reservation->getDatechoice()->format('Y-m-d');
+        $dateNow = date('Y-m-d');
+        $isPaid = $reservation->getIspaid();
+
         if ($dateChoice == $dateNow && $isPaid) {
             return $this->render('reservation_control_qrcode/success.html.twig', [
                 'reservation' => $reservation

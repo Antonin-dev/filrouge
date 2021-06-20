@@ -33,6 +33,7 @@ class ReservationSuccessController extends AbstractController
         $reservation = $this->entityManager->getRepository(Reservation::class)->findOneBy([
             'stripesession' => $stripeId
         ]);
+       
 
         if (!$reservation || $reservation->getUser() != $this->getUser()) {
             return $this->redirectToRoute('home');
@@ -42,7 +43,9 @@ class ReservationSuccessController extends AbstractController
             $reservation->setIsPaid(true);
             $imgQrCode = $qrcode->qrcode($reservation->getNumberticket());
             $reservation->setQrcode($imgQrCode['name']);
+            $this->entityManager->persist($reservation);
             $this->entityManager->flush();
+            
         }
         
         

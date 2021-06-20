@@ -36,15 +36,15 @@ class ReservationRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Reservation
+    public function findReservationByIspaidAndUser($value)
     {
         return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
+            ->andWhere('r.user = :val')
+            ->andWhere('r.ispaid = true')
             ->setParameter('val', $value)
+            ->orderBy('r.datechoice', 'DESC')
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
-    }
-    */
+    }    
 }

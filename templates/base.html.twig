@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description"
 		content="Bienvenue dans Jurassic World, uniquer parc spécialisé dans les dinosaures. Venez découvrir l'aventure extraordinaire.">
+	<link rel="icon" href="{{ asset('assets/img/Jurassicqrcode.png') }}" />
 	<title>
 		{% block title %}Jurassic World
 		{% endblock %}
@@ -21,49 +22,9 @@
 <body {% if block('effet') is defined %} {{ stimulus_controller('symfony/ux-swup/swup') }} {% endif %}
 	data-containers="#swup #lien" data-theme="slide">
 	<header>
-		{# Position fixed sur la navbar lié avec le css et l'element main-content #}
-		<nav class="navbar navbar-expand-lg navbar-light bg-light py-1">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="{{path('home')}}"><img class="img-navbar"
-						src="{{ asset('assets/img/jurassic_world_navbar.png') }}" alt="logo jurassic world"></a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-					aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarText">
-					<ul class="navbar-nav me-auto   mb-lg-0">
-						<li class="nav-item d-flex align-items-center">
-							<a class="nav-link" href="{{path('attraction')}}">Attractions</a>
-						</li>
-						<li class="nav-item d-flex align-items-center">
-							<a class="nav-link" href="{{path('spectacle')}}">Spectacle</a>
-						</li>
-						<li class="nav-item d-flex align-items-center">
-							<a class="nav-link" href="{{path('reservation')}}">Je reserve</a>
-						</li>
-						<li class="nav-item d-flex align-items-center">
-							<a class="nav-link" href="{{path('acces_parc')}}">Acces au parc</a>
-						</li>
-						<li class="nav-item d-flex align-items-center">
-							<a class="nav-link" href="{{path ('rating')}}">Avis</a>
-						</li>
-					</ul>
-					<span class="navbar-text swup-control">
-						{% if app.user %}
-						<a href="{{path('account')}} " id="lien">Mon compte
-							<small>({{app.user.firstname}})</small>
-						</a>
-						|
-						<a href="{{path('app_logout')}} " id="lien">Déconnexion</a>
-						{% else %}
-						<a href="{{path('app_login')}} " id="lien">Connexion</a>
-						|
-						<a href="{{path('register')}} " id="lien">Inscription</a>
-						{% endif %}
-					</span>
-				</div>
-			</div>
-		</nav>
+		{# Navbar include start #}
+		{% include "base_inc/navbar_inc.html.twig" %}
+		{# Navbar include end #}
 	</header>
 	<div class="container bg-background mt-0 rounded-3 p-2">
 		<div {% if block('effet') is defined %} id="swup" {% endif %}>
@@ -117,18 +78,27 @@
 
 				</div>
 				{# -------------------------------FOOTER------------------------------- #}
-				
+
 			</main>
 		</div>
 
-		{{ encore_entry_script_tags('app') }}
-
-
-		{% block script %}{% endblock %}
+		
 	</div>
-</body>
-<footer class="container-fluid text-white text-center bg-dark fixed-bottom">
-					<p>&copy; www.antonin-dev.fr</p>
-				</footer>
+	<footer class="container-fluid text-white text-center bg-dark mt-2 {% if block('footerfixed') is defined %}fixed-bottom {% endif %}">
+	<div class="row d-flex flex-column">
+		<div class="col-2 m-auto d-flex justify-content-around align-items-center">
+			<img src="{{asset('assets/img/instagram.svg')}}" alt="" srcset="" height="30px">
+			<img src="/assets/img/logo_jw.svg" alt="logo jurassic world" width="30px">
+			<img src="{{asset('assets/img/twitter.svg')}}" alt="" srcset="" height="30px">
+		</div>
+		<div class="col-6 m-auto">
 
+			<p class="mb-0">&copy; www.antonin-dev.fr</p>
+			
+		</div>
+	</div 
+</footer>
+	{{ encore_entry_script_tags('app') }}
+	{% block script %}{% endblock %}
+</body>
 </html>

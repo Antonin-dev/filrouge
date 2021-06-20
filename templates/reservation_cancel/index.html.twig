@@ -3,20 +3,16 @@
 {% block effet %}{% endblock %}
 {% block title %}Echec paiement - Jurassic World
 {% endblock %}
+{% block footerfixed %}{% endblock %}
 
 {% block content %}
-
 	<div class="container-address mt-4 text-center d-flex flex-column align-items-center bg-secondary text-white rounded-3">
-
 		<img src="{{asset('assets/img/jurassic_world_bandeau.jpg')}}" alt="bandeau jurassic world" class="img-fluid mt-2">
-
 		<h2>Bonjour
 			{{reservation.user.firstname}}
 			{{reservation.user.lastname}}</h2>
 		<p>Le paiement de votre réservation n'a pas pu aboutir</p>
 		<p>Vous pouvez recommencer votre reservation en cliquant en cliquant sur le bouton ci-dessous</p>
-		<a href="{{path('reservation')}}" class="btn btn-secondary">Voir mes commandes</a>
-
-
+		<a href="{{path('simulation')}}" class="btn btn-secondary">Voir mes commandes</a>
 	</div>
 {% endblock %}

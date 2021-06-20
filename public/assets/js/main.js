@@ -1,18 +1,18 @@
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("ok");
-});
-
-console.log("je suis la");
 const quantityInput = document.querySelector("#reservation_quantity");
 const quantityDisplay = document.querySelector(".quantity-ajax");
 const priceReservationDisplay = document.querySelector(".total-ajax");
 const priceDisplay = document.querySelector(".price-ajax");
 
 // console.log(await fetchSpe());
-
-const priceDisplayFunction = async () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  console.log("chagrment");
+  quantityDisplay.textContent = quantityInput.value;
   priceDisplay.textContent = await fetchSpe();
-};
+  priceReservationDisplay.textContent = await fetchSpe();
+});
+// const priceDisplayFunction = async () => {
+//   priceDisplay.textContent = await fetchSpe();
+// };
 
 const updateValue = async () => {
   //   console.log(quantityInput.value);
