@@ -3,7 +3,7 @@
 {% endblock %}
 {% block footerfixed %}{% endblock %}
 {% block content %}
-<div class="col-12 text-white bg-secondary p-2 mt-2 rounded-3">
+<div class="row text-white bg-secondary p-2 mt-2 rounded-3">
 	<div class="col-md-12 d-flex justify-content-between">
 		<h2>Mes réservations</h2>
 		<a href="{{path('account')}}">
@@ -11,7 +11,7 @@
 		</a>
 	</div>
 	<p>C'est dans cet espace que vous allez pouvoir consulter vos réservations</p>
-	<div class="container-reservation">
+	<div class="container-reservation col-12">
 		<table class="table mt-4 text-center text-white">
 			<thead>
 				<tr>

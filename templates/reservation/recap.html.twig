@@ -4,32 +4,38 @@
 {% endblock %}
 {% block title %}Je réserve - Jurassic World{% endblock %}
 {% block content %}
-<div class="container-address mt-4 text-center d-flex flex-column align-items-center bg-secondary text-primary rounded-3">
-  <h2>Pret à réserver {{reservation.user.firstname}}</h2>
-  <p>Vérifier vos informations : </p>
-  <div class="card col-6 bg-dark mb-4 text-white" style="width: 18rem;">
-    <img class="card-img-top" src="{{asset('assets/img/logo_jw.svg')}}" alt="logo jurassic world">
-    <div class="card-body">
-      <h5 class="card-title">{{reservation.user.firstname}} {{reservation.user.lastname}}</h5>
-      <p class="card-text">
-        {{reservation.user.email}} <br>
-        <p>Addresse de facturation : <br>
-          {{reservation.AddressReservation|replace({'[br]' : '<br/>'})|raw}}
+<div class="row mt-4 text-center m-auto flex-column align-items-center bg-secondary text-primary rounded-3">
+  
+    <h2>Pret à réserver {{reservation.user.firstname}}</h2>
+    <p>Vérifier vos informations : </p>
+    <div class="card col-6 bg-dark mb-4 text-white" style="width: 18rem;">
+      <img class="card-img-top" src="{{asset('assets/img/logo_jw.svg')}}" alt="logo jurassic world">
+      <div class="card-body">
+        <h5 class="card-title">{{reservation.user.firstname}} {{reservation.user.lastname}}</h5>
+        <p class="card-text">
+          {{reservation.user.email}} <br>
+          <p>Addresse de facturation : <br>
+            {{reservation.AddressReservation|replace({'[br]' : '<br/>'})|raw}}
+          </p>
+          <p>
+            Date d'entrée au parc : {{reservation.datechoice|date("d/m/Y")}} <br>
+            <hr>
+            Nombre de personne : {{reservation.quantity}} <br>
+            Prix entrée au parc : {{ (price / 100)|number_format(2, ',', '.') }} €.<br>
+            Total : {{ (reservation.total / 100)|number_format(2, ',', '.') }} €. <br>
+            <hr>
+            Votre réservation sera validé apres le paiement
+          </p>
         </p>
-        <p>
-          Date d'entrée au parc : {{reservation.datechoice|date("d/m/Y")}} <br>
-          <hr>
-          Nombre de personne : {{reservation.quantity}} <br>
-          Prix entrée au parc : {{ (price / 100)|number_format(2, ',', '.') }} €.<br>
-          Total : {{ (reservation.total / 100)|number_format(2, ',', '.') }} €. <br>
-          <hr>
-          Votre réservation sera validé apres le paiement
-        </p>
-      </p>
-    </div>
+      </div>
   </div>
+  <div class="col-12">
   <button type="button" class="btn btn-success btn-block mb-1" id="checkout-button">Effectuer le paiement</button>
+  </div>
+  
+
 </div>
+  
 {% endblock %}
 {% block script %}
 <script type="text/javascript">

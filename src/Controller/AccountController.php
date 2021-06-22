@@ -13,6 +13,8 @@ class AccountController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('account/index.html.twig');
+        return $this->render('account/index.html.twig', [
+            'notification' => null
+        ]);
     }
 }

@@ -5,44 +5,43 @@
 {% block effet %}{% endblock %}
 {% block content %}
 
-<div class="container-address mt-4 bg-secondary p-2 rounded-3 text-primary">
+<div class="row mt-4 bg-secondary p-2 rounded-3 text-primary">
 	<div class="col-md-12 d-flex justify-content-between">
 		<h2 class="text-center">Mes adresses</h2>
 		<a href="{{path('account')}}">
 			<img src="{{asset('assets/img/close.svg')}}" alt="page précédente" width="20px">
 		</a>
 	</div>
-	<p>C'est dans cet espace que vous allez pouvoir gérer toutes vos adresses.</p>
-	<a href="{{path('account_address_add')}}" class="btn btn-success btn-sm">Ajouter une adresse</a>
-	<hr>
-	{% if app.user.addresses|length == 0 %}
-		<p class="text-center">
-			Vous n'avez pas encore ajouté d'adresse dans votre compte client. Pour en ajouter une, veuillez
-			<a href="{{path('account_address_add')}}">cliquer ici</a>.
-		</p>
-	{% else %}
-	<div class="row">
-		<div class="col-md-12 text-center card-address">
-			{% for address in app.user.addresses %}
-
-				<div class="card" style="width: 18rem;">
-					<div class="card-body text-dark">
-						<h5 class="card-title">{{ address.nameaddress }}</h5>
-						<p class="card-text">{{ address.address }},
-							<br>
-							{{ address.postal }}
-							-
-							{{ address.city }}
-							-
-							{{ address.country }}
-						</p>
-						<a class="text-dark" href="{{path('account_address_edit', {'id' : address.id})}}">Modifier</a>
-						|
-						<a class="text-dark" href="{{path('account_address_delete', {'id' : address.id})}}">Supprimer</a>
+	<div class="col-12">
+		<p>C'est dans cet espace que vous allez pouvoir gérer toutes vos adresses.</p>
+		<a href="{{path('account_address_add')}}" class="btn btn-success btn-sm">Ajouter une adresse</a>
+		<hr>
+		{% if app.user.addresses|length == 0 %}
+			<p class="text-center">
+				Vous n'avez pas encore ajouté d'adresse dans votre compte client. Pour en ajouter une, veuillez
+				<a href="{{path('account_address_add')}}">cliquer ici</a>.
+			</p>
+		{% else %}
+	</div>
+	<div class="row d-flex justify-content-around">
+				{% for address in app.user.addresses %}
+					<div class="card col-12 col-sm-6 col-md-4 mb-1 d-flex justify-content-center align-items-center text-center" style="width: 18rem;">
+						<div class="card-body text-dark">
+							<h5 class="card-title">{{ address.nameaddress }}</h5>
+							<p class="card-text">{{ address.address }},
+								<br>
+								{{ address.postal }}
+								-
+								{{ address.city }}
+								-
+								{{ address.country }}
+							</p>
+							<a class="text-dark" href="{{path('account_address_edit', {'id' : address.id})}}">Modifier</a>
+							|
+							<a class="text-dark" href="{{path('account_address_delete', {'id' : address.id})}}">Supprimer</a>
+						</div>
 					</div>
-				</div>
-			{% endfor %}
-		</div>
+				{% endfor %}
 	</div>
 	{% endif %}
 </div>

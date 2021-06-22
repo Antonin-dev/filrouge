@@ -39,6 +39,10 @@ class RattingAddController extends AbstractController
             $entityManager->persist($rating);
             $entityManager->flush();
             $notification = 'Commentaire ajouté avec succes, merci pour votre retour.'; 
+
+            return $this->render('account/index.html.twig', [
+                'notification' => 'Commentaire ajouté avec succes. Merci de votre confiance'
+            ]);
         }
         
         return $this->render('rating/rating_add.html.twig', [

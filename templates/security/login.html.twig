@@ -1,40 +1,47 @@
 {% extends 'base.html.twig' %}
 {% block title %}Connexion - Jurassic World{% endblock %}
-{% block content %}
-<form method="post" class="bg-secondary rounded-3 text-primary p-2 mt-3">
-	{% if error %}
-	<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-	{% endif %}
-	{% if app.user %}
-	<div class="mb-3">
-		You are logged in as {{ app.user.username }},<a href="{{ path('app_logout') }}">Logout</a>
-	</div>
-	{% endif %}
-	<div class="col-md-12 d-flex justify-content-between">
-		<h2>Connexion</h2>
-		<a href="{{path('home')}}">
-			<img src="{{asset('assets/img/close.svg')}}" alt="page précédente" width="20px">
-		</a>
-	</div>
-	{% for message in app.flashes('notice') %}
-	<div class="alert alert-info">{{message}}</div>
-	{% endfor %}
-	<div class="container-form-connexion ">
-		<h4 class="mb-3 font-weight-normal">Merci de vous connecter</h4>
-		<label for="inputEmail">Votre email</label>
-		<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Votre email" required autofocus>
-		<label for="inputPassword">Votre mot de passe</label>
-		<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Votre mot de passe" required>
-		<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-		<button class="btn btn-lg btn-success btn-block mt-3" type="submit">Se connecter</button>
-		<hr>
-		<p class="text-center">
-			<a href="{{ path('account_reset_password') }}">Mot de passe oublié</a>
-		</p>
-		<p class="text-center">Ou souhaitez vous
-			<a href="{{path('register')}}">créer un compte</a>
-		</p>
-	</div>
-</form>
-{% endblock %}
 {% block footerfixed %}{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-12">
+		<form method="post" class="bg-secondary rounded-3 text-primary p-2 mt-3">
+			{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
+			{% if app.user %}
+			<div class="mb-3">
+				You are logged in as {{ app.user.username }},<a href="{{ path('app_logout') }}">Logout</a>
+			</div>
+			{% endif %}
+			<div class="col-md-12 d-flex justify-content-between">
+				<h2>Connexion</h2>
+				<a href="{{path('home')}}">
+					<img src="{{asset('assets/img/close.svg')}}" alt="page précédente" width="20px">
+				</a>
+			</div>
+			{% for message in app.flashes('notice') %}
+			<div class="alert alert-info">{{message}}</div>
+			{% endfor %}
+			<div class="container-form-connexion ">
+				<h4 class="mb-3 font-weight-normal">Merci de vous connecter</h4>
+				<label for="inputEmail">Votre email</label>
+				<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
+					placeholder="Votre email" required autofocus>
+				<label fo`r="inputPassword">Votre mot de passe</label>
+				<input type="password" name="password" id="inputPassword" class="form-control"
+					placeholder="Votre mot de passe" required>
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+				<button class="btn btn-lg btn-success btn-block mt-3" type="submit">Se connecter</button>
+				<hr>
+				<p class="text-center">
+					<a href="{{ path('account_reset_password') }}">Mot de passe oublié</a>
+				</p>
+				<p class="text-center">Ou souhaitez vous
+					<a href="{{path('register')}}">créer un compte</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</div>
+
+{% endblock %}
