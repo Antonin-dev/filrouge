@@ -38,4 +38,5 @@ security:
     - { path: ^/admin, roles: ROLE_ADMIN }
     - { path: ^/compte, roles: ROLE_USER }
     - { path: ^/reservation, roles: ROLE_USER }
+    - { path: ^/control, roles: ROLE_CONTROLLER }
   

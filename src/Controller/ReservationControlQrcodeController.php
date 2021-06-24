@@ -22,7 +22,7 @@ class ReservationControlQrcodeController extends AbstractController
 
 
     /**
-     * @Route("/reservation/control/qrcode/{reservation}", name="reservation_control_qrcode")
+     * @Route("/control/qrcode/{reservation}", name="reservation_control_qrcode")
      */
     public function index($reservation): Response
     {

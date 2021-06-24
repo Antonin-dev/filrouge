@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use DateTime;
+use DateTimeZone;
 use App\Entity\Parc;
 use App\Entity\Address;
 use App\Entity\Reservation;
@@ -83,7 +84,8 @@ class ReservationController extends AbstractController
      */
     public function recap($addressid): Response
     {
-        $date = new DateTime();
+        $date = new DateTime('now', new DateTimeZone('Europe/Paris'));
+        
         $entryPrice = $this->entityManager->getRepository(Parc::class)->findOneBy(['name' => 'jurassicworld'])->getPrice();
         $addressReservation = $this->entityManager->getRepository(Address::class)->findOneBy([
             'id' => $addressid

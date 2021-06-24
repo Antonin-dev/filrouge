@@ -4,7 +4,7 @@
 {% block content %}
 <div class="row pt-2 mb-4">
 	<div class="col-12 bg-secondary p-2 mt-2 text-primary rounded-2 ">
-		<h2 class="text-center">{{attraction.name}}</h2>
+		<h1 class="text-center title-important">{{attraction.name}}</h1>
 		<div class="image-full rounded-3" style="background-image: url(/uploads/{{attraction.imagefull}}); background-size: cover;"></div>
 			<span class="mb-2 badge
 					{% if attraction.category == 'Vitesse' %}
@@ -22,8 +22,8 @@
 	</div>
 	<hr>
 	<div class="col-12 bg-secondary text-primary text-center rounded-3">
-		<h2>Nos attractions du moment</h2>
-		<p>Découvrez les attractions les plus fun</p>
+		<h2 class="title-important">Nos attractions du moment</h2>
+		<p>Découvrez nos attractions les plus populaires !</p>
 	</div>
 	<div class="row justify-content-center">
 		{% for attraction in attractions %}
