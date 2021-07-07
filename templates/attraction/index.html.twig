@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{# Je récupere le template de base creer #}
 {% block title %}Nos attractions - Jurassic World{% endblock %}
 {% block effet %}{% endblock %}
 {% block content %}
@@ -6,8 +7,10 @@
     <div class="col-md-12 ">
         <h1 class="text-center mt-3 mb-4 text-primary bg-secondary rounded-2 title-important">Les Attractions du parc Jurassic World</h1>
         <div class="row attraction-container d-flex justify-content-center">
+        {# Debut de la boucle #}
             {% for attraction in attractions %}
                 <div class="col-sm-12 col-md-6 col-lg-4">
+                    {# Include pour favoriser la lecture du code #}
                     {% include "attraction/single_attraction.html.twig" %}
                 </div>
             {% endfor %}

@@ -46,10 +46,7 @@ class AccountResetPasswordController extends AbstractController
                 $this->entityManager->persist($resetPassword);
                 $this->entityManager->flush();
                 $slug = "reinitialisation-mot-de-passe/" . $resetPassword->getToken();
-                // dd($slug);
-
                 $url = '<a href="' . $_ENV['DOMAIN_URL'] . $slug . '">mettre à jour votre mot de passe</a>';
-                // dd($url);
                 $mail = new Mailjet();
                 $mail->resetPassword($userResetPassword->getEmail(), $userResetPassword->getFirstName(), $url);
                 $this->addFlash('notice','Un email vient de vous etes envoyé a l\'adresse indiqué .');
@@ -70,7 +67,7 @@ class AccountResetPasswordController extends AbstractController
         $resetPassword = $this->entityManager->getRepository(ResetPassword::class)->findOneBy([
             'token' => $token
         ]);
-        if ($resetPassword) {
+        if (!$resetPassword) {
             $this->redirectToRoute('account_reset_password');
         }
 

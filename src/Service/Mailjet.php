@@ -7,13 +7,9 @@ use Mailjet\Resources;
 
 class Mailjet
 {
-    private $apiKey = '';
-    private $apiKeySecret = '';
-
-
     public function sendWelcomeEmail($email, $name)
     {
-        $mj = new Client($this->apiKey, $this->apiKeySecret, true, ['version' => 'v3.1']);
+        $mj = new Client($_ENV['KEY_PUBLIC_MAILJET'], $_ENV['KEY_PRIVATE_MAILJET'], true, ['version' => 'v3.1']);
 
         $body = [
           'Messages' => [
@@ -44,7 +40,7 @@ class Mailjet
 
     public function reservationEmail($email, $name, $numberResa, $date, $quantity, $qrcode)
     {
-        $mj = new Client($this->apiKey, $this->apiKeySecret, true, ['version' => 'v3.1']);
+        $mj = new Client($_ENV['KEY_PUBLIC_MAILJET'], $_ENV['KEY_PRIVATE_MAILJET'], true, ['version' => 'v3.1']);
         $qrcodeUrl = $_ENV['DOMAIN_URL'] . 'assets/qr-code/' . $qrcode;
 
         $body = [
@@ -80,7 +76,7 @@ class Mailjet
 
     public function resetPassword($email, $name, $link)
     {
-        $mj = new Client($this->apiKey, $this->apiKeySecret, true, ['version' => 'v3.1']);
+        $mj = new Client($_ENV['KEY_PUBLIC_MAILJET'], $_ENV['KEY_PRIVATE_MAILJET'], true, ['version' => 'v3.1']);
 
         $body = [
           'Messages' => [

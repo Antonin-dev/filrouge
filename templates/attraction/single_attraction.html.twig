@@ -2,6 +2,7 @@
 	<img src="/uploads/{{attraction.picture}}" class="card-img-top img-card " alt="{{attraction.name}}">
 	<div class="card-body d-flex flex-column justify-content-around">
 		<span class="badge
+				{# Changement de couleur des pils en fonction de la catégorie de l'application #}
 			    {% if attraction.category == 'Vitesse' %}
 			        bg-vitesse
 			    {% elseif attraction.category == 'Horreur' %}
@@ -15,6 +16,7 @@
 		<h5 class="card-title">{{attraction.name}}</h5>
 		<p class="card-text">{{attraction.subtitle}}</p>
 		<div class="d-grid gap-2">
+			{# Lien qui part sur attraction detail en lui passant comme paramettre le slug de l'application ce qui permetra de cibler les pages details #}
 			<a href="{{ path('attraction_detail', { 'slug' : attraction.slug } ) }}" class="text-white btn btn-success">Découvrir</a>
 		</div>
 	</div>

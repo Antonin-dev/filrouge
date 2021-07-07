@@ -46,7 +46,7 @@ class StripeController extends AbstractController
             return new JsonResponse(['error' => 'reservation']);
         }
 
-        Stripe::setApiKey('sk_test_51Ifj6fDsg4lIRoSh8dYYR1fdXFpy6Pely5jB0Bf0zxVSOm3d36vacaafbongYeMPiBaKVZm7kq7INNS4NQ3Gk6nJ005vtwBPyU');
+        Stripe::setApiKey($_ENV['KEY_STRIPE']);
 
         $YOUR_DOMAIN = $_ENV['DOMAIN_URL'];
 
